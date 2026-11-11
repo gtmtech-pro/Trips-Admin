@@ -24,6 +24,8 @@ import { SharedModule } from "../shared/shared.module";
 import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
 import { ToastsContainer } from './dashboards/dashboard/toasts-container.component';
 import { DashboardsModule } from "./dashboards/dashboards.module";
+import { TripsModule } from './trips/trips.module';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { DashboardsModule } from "./dashboards/dashboards.module";
     SharedModule,
     SlickCarouselModule,
     LightboxModule,
+    SettingsModule,
+    TripsModule,
     DashboardsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

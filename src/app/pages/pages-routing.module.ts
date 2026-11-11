@@ -20,6 +20,12 @@ const routes: Routes = [
   },
   {
     path: 'pages', loadChildren: () => import('./extrapages/extraspages.module').then(m => m.ExtraspagesModule)
+  },
+  {
+    path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+  },
+  {
+    path: 'trips', loadChildren: () => import('./trips/trips.module').then(m => m.TripsModule)
   }
 ];
 

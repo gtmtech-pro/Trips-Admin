@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class MessageConstants {
     public RecordSavedMessage: string = "Record saved successfully";
+    public DeleteConfirmationTitle: string = "Delete record confirmation";
     public DeleteConfirmationMessage: string = "Are you sure to delete this record?";
     public ApproveConfirmationMessage: string = "Are you sure to approve selected attendances?";
     public RejectConfirmationMessage: string = "Are you sure to reject selected attendances?";

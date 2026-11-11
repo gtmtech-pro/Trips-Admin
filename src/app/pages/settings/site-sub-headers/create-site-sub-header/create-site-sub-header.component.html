@@ -1,0 +1,113 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Site Sub Header" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="site-sub-header">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="siteSubHeaderForm" [formGroup]="siteSubHeaderForm" class="siteSubHeader w-100-p"
+                autocomplete="off" (ngSubmit)="saveOrUpdateSiteSubHeaderDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/settings/site-sub-headers'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Site Sub Header
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/settings/site-sub-headers'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4">
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="SiteHeaderId">
+                                Site Header<span class="text-danger">*</span>
+                            </label>
+                            <select id="siteHeaderId" name="siteHeaderId" formControlName="SiteHeaderId"
+                                class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['SiteHeaderId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of siteHeaderList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['SiteHeaderId'])">
+                                {{getErrorMessage(siteSubHeaderForm, 'SiteHeaderId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="TransactionId">
+                                Transaction<span class="text-danger">*</span>
+                            </label>
+                            <select id="transactionId" name="transactionId" formControlName="TransactionId"
+                                class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['TransactionId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of transactionList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['TransactionId'])">
+                                {{getErrorMessage(siteSubHeaderForm, 'TransactionId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="displayOrder">
+                                Display Order<span class="text-danger">*</span>
+                            </label>
+                            <input id="displayOrder" name="displayOrder" formControlName="DisplayOrder"
+                                class="form-control" required digitOnly
+                                [ngClass]="{'is-invalid': isInvalidControl(form['DisplayOrder'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['DisplayOrder'])">
+                                {{getErrorMessage(siteSubHeaderForm, 'DisplayOrder')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="remarks">
+                                Remarks
+                            </label>
+                            <input id="remarks" name="remarks" formControlName="Remarks" class="form-control"
+                                maxlength="350" [ngClass]="{'is-invalid': isInvalidControl(form['Remarks'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Remarks'])">
+                                {{getErrorMessage(siteSubHeaderForm, 'Remarks')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -26,6 +26,8 @@ import { TeamComponent } from './team/team.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { StickyTableScrollDirective } from '../../shared/sticky-table-scroll.directive';
+import { StickyTableDirective } from '../../shared/sticky-table.directive';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { TermsConditionComponent } from './terms-condition/terms-condition.compo
     NgSelectModule,
     FlatpickrDirective,
     ExtraPagesRoutingModule,
+    StickyTableDirective,
+    StickyTableScrollDirective,
     SharedModule,
     NgPipesModule
   ],

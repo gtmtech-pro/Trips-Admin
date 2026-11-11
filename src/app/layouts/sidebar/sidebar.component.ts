@@ -8,10 +8,10 @@ import { environment } from '../../../environments/environment';
 import { AuthenticationService } from '../../core/services/auth.service';
 
 @Component({
-    selector: 'app-sidebar',
-    templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.scss'],
-    standalone: false
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
+  standalone: false
 })
 export class SidebarComponent implements OnInit {
   id1Index: number = 201;
@@ -32,6 +32,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     // Menu Items
     this.menuItems = MENU;
+
     this.router.events.subscribe((event) => {
       if (document.documentElement.getAttribute('data-layout') != "twocolumn") {
         if (event instanceof NavigationEnd) {
@@ -46,21 +47,21 @@ export class SidebarComponent implements OnInit {
    */
   ngAfterViewInit() {
     setTimeout(() => {
-          let siteHeaderNavigations = this.authenticationService.getSiteHeaderNavigations();
+      let siteHeaderNavigations = this.authenticationService.getSiteHeaderNavigations();
       var userRoleTransactions = this.authenticationService.getUserRoleTransactions();
 
       if (userRoleTransactions != null) {
         this.menuItems = [];
-        
+
         let menuSubItem: MenuItem = {
           id: 200,
-          label: 'Veejan App',
+          label: 'Trip App',
           //label: 'MENUITEMS.COMPONENTS.TEXT',
           isTitle: true,
           isVisible: true
         };
 
-        let headerItem = this.menuItems.find((ob: any) => ob.label === 'Veejan App');
+        let headerItem = this.menuItems.find((ob: any) => ob.label === 'Trip App');
         if (headerItem === undefined) {
           this.menuItems.push(menuSubItem);
         }
@@ -73,7 +74,7 @@ export class SidebarComponent implements OnInit {
     }, 0);
   }
 
-    addFirstLevelHeaders(menuSubItem: any, siteHeaderNavigations: any, userRoleTransactions: any) {
+  addFirstLevelHeaders(menuSubItem: any, siteHeaderNavigations: any, userRoleTransactions: any) {
     let headerDataL1 = siteHeaderNavigations.filter((s: any) => s.Description == null);
     headerDataL1.forEach((headerDataItemL1: any) => {
 

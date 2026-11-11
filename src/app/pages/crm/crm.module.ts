@@ -20,6 +20,8 @@ import { DealsComponent } from './deals/deals.component';
 
 import { DatePipe } from '@angular/common';
 import { SortByCrmPipe } from "../crm/sort-by.pipe";
+import { StickyTableScrollDirective } from '../../shared/sticky-table-scroll.directive';
+import { StickyTableDirective } from '../../shared/sticky-table.directive';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { SortByCrmPipe } from "../crm/sort-by.pipe";
     NgbDropdownModule,
     NgbAccordionModule,
     FlatpickrDirective,
+    StickyTableDirective,
+    StickyTableScrollDirective,
     NgSelectModule,
     CRMRoutingModule,
     SharedModule

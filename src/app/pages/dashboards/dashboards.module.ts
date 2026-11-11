@@ -24,6 +24,8 @@ import { SharedModule } from '../../shared/shared.module';
 
 // Component
 import { ProjectsComponent } from './projects/projects.component';
+import { StickyTableScrollDirective } from '../../shared/sticky-table-scroll.directive';
+import { StickyTableDirective } from '../../shared/sticky-table.directive';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { ProjectsComponent } from './projects/projects.component';
     NgApexchartsModule,
     SlickCarouselModule,
     FlatpickrDirective,
+    StickyTableDirective,
+    StickyTableScrollDirective,
     DashboardsRoutingModule,
     SharedModule,
     NgbTypeaheadModule,

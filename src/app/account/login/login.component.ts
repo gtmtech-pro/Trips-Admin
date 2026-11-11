@@ -149,8 +149,8 @@ export class LoginComponent extends BaseComponent<LoginModel> implements OnInit 
           this.authenticationService.getTransactionsAndSettings(this.loginModel)
             .subscribe((response: any) => {
 
-              if (response[0].Success) {
-                window.sessionStorage.setItem('userRoleTransactions', JSON.stringify(response[0].Results));
+              if (response[1].Success) {
+                window.sessionStorage.setItem('userRoleTransactions', JSON.stringify(response[1].Results));
                 window.sessionStorage.setItem('siteHeaderNavigations', JSON.stringify(response[2].Results));
 
                 if (this.loginModel.RememberMe) {
@@ -168,11 +168,11 @@ export class LoginComponent extends BaseComponent<LoginModel> implements OnInit 
               // Set default Lighthouse Sesstion values
               this.TripSettings = new TripSettingModel();
 
-              if (response[1].Success) {
+              if (response[0].Success) {
                 let settingAttributes = Object.keys(this.TripSettings);
                 settingAttributes.forEach((settingName: any) => {
 
-                  let settingItem = response[1].Results.find((s: any) => s.SettingName == settingName);
+                  let settingItem = response[0].Results.find((s: any) => s.SettingName == settingName);
                   if (settingItem != null) {
                     let settingIntValue = Number(settingItem.SettingValue);
                     let settingValue = isNaN(settingIntValue) ? settingItem.SettingValue : settingIntValue;

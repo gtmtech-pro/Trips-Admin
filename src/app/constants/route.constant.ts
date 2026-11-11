@@ -376,5 +376,10 @@ export const RouteConstants = {
         List: 'settings/transactions',
         New: 'settings/transactions/:actionType',
         Edit: 'settings/transactions/:actionType/:transactionId'
+    },
+    Trip: {
+        List: 'trips/trips',
+        New: 'trips/trips/:actionType',
+        Edit: 'trips/trips/:actionType/:TripId'
     }
 }

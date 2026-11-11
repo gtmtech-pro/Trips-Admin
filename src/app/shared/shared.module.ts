@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgbNavModule, NgbAccordionModule, NgbDropdownModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNavModule, NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Swiper Slider
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -13,9 +13,9 @@ import { LandingScrollspyDirective } from './landingscrollspy.directive';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ConfirmationDialogBoxComponent } from './confirmation-dialog-box/confirmation-dialog-box.component';
 import { ShowDialogComponent } from './show-dialog/show-dialog.component';
-import { ShowDialogService } from './show-dialog.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
+import { StickyTableDirective } from './sticky-table.directive';
+import { StickyTableScrollDirective } from './sticky-table-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ConfirmationDialogBoxComponent,
     ShowDialogComponent,
     ScrollspyDirective,
-    LandingScrollspyDirective
+    LandingScrollspyDirective,
   ],
   imports: [
     CommonModule,
@@ -32,6 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgbAccordionModule,
     NgbDropdownModule,
     SlickCarouselModule,
+    StickyTableDirective,
+    StickyTableScrollDirective,
     CountUpDirective,
     MatDialogModule,
   ],

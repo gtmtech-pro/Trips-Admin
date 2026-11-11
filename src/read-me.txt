@@ -24,3 +24,12 @@ git rm --cached -r .angular
 
 git commit -m "Stop tracking angular & dist and keep locally"
 git push origin main
+
+
+Change the remote URL
+git remote set-url origin <NEW_REPOSITORY_URL>
+
+
+Verify the changes
+Confirm that the URL has updated successfully by listing your remotes again:
+git remote -v

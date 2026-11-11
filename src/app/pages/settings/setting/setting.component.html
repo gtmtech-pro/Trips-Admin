@@ -1,0 +1,214 @@
+<div id="setting" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+        
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Lighthouse Application Settings
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+                <div class="tab-content p-24">
+                    <form name="settingForm" [formGroup]="settingForm" class="setting w-100-p" fxLayout="column" fxFlex>
+                        <mat-label>User Information</mat-label>
+
+                        <div fxLayout="row" fxLayout.lt-md="column" class="input-row" fxLayoutGap="10px"
+                            fxLayoutGap.lt-md="0px">
+                            <mat-form-field appearance="outline" fxFlex="20" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <mat-label>User Type</mat-label>
+
+                                <mat-select formControlName="RoleId" appearance="outline" required
+                                    [disabled]="PageRights.IsReadOnly" (selectionChange)="onChangeRole($event.value)"
+                                    #SelectRole>
+                                    <mat-select-filter class="select-filter" *ngIf="SelectRole.focused"
+                                        [array]="roleList" (filteredReturn)="this.filteredRoleItems = $event"
+                                        [displayMember]="'Name'">
+                                    </mat-select-filter>
+                                    <mat-option [value]="roleItem.Id" *ngFor="let roleItem of filteredRoleItems">
+                                        {{ roleItem.Name }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="settingForm.controls.RoleId.invalid">
+                                    {{getErrorMessage(settingForm, 'RoleId')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="35" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <mat-label>Select User</mat-label>
+
+                                <mat-select formControlName="UserId" required appearance="outline"
+                                    [disabled]="PageRights.IsReadOnly" #SelectUserId>
+                                    <mat-select-filter class="select-filter" *ngIf="SelectUserId.focused"
+                                        [array]="userList" (filteredReturn)="this.filteredUserItems = $event"
+                                        [displayMember]="'Name'">
+                                    </mat-select-filter>
+                                    <mat-option [value]="userItem.Id" *ngFor="let userItem of filteredUserItems">
+                                        {{ userItem.Name }}
+                                    </mat-option>
+                                </mat-select>
+
+                                <mat-error *ngIf="settingForm.controls.UserId.invalid">
+                                    {{getErrorMessage(settingForm, 'UserId')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <div class="filter-button" fxFlex="20" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <button mat-raised-button class="fuse-blue" color="accent"
+                                    (click)="saveSettings()"><span>Get User Details</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-content p-24">
+                    <form name="fileCompressForm" [formGroup]="fileCompressForm" class="setting w-100-p"
+                        fxLayout="column" fxFlex>
+                        <mat-label>Compress Uploaded Image Size</mat-label>
+
+                        <div fxLayout="row" fxLayout.lt-md="column" class="input-row" fxLayoutGap="10px"
+                            fxLayoutGap.lt-md="0px">
+                            <mat-form-field appearance="outline" fxFlex="20" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <mat-label>Content Type</mat-label>
+
+                                <mat-select formControlName="ContentTypeId" appearance="outline" required>
+                                    <mat-option value="">Select Content Type</mat-option>
+                                    <mat-option value="VTDailyReporting">VT Daily Reporting</mat-option>
+                                    <mat-option value="GuestLecture">Guest Lectures</mat-option>
+                                    <mat-option value="FieldIndustryVisits">Field Visits</mat-option>
+                                    <mat-option value="VCFieldVisits">VC Field Visits</mat-option>
+                                    <mat-option value="VCSchoolVisits">VC School Visits</mat-option>
+                                    <mat-option value="VTPCertificate">VTP Certificate</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="fileCompressForm.controls.ContentTypeId.invalid">
+                                    {{getErrorMessage(fileCompressForm, 'ContentTypeId')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="20" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <mat-label>Largest Files Size</mat-label>
+
+                                <mat-select formControlName="LargestFilesSize" appearance="outline" required>
+                                    <mat-option value="">Select Largest Files Size</mat-option>
+                                    <mat-option value="262144">0.25 MB</mat-option>
+                                    <mat-option value="524288">0.5 MB</mat-option>
+                                    <mat-option value="1048576">1 MB</mat-option>
+                                    <mat-option value="5242880">5 MB</mat-option>
+                                    <mat-option value="10485760">10 MB</mat-option>
+                                    <mat-option value="10485761">> 10 MB</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="fileCompressForm.controls.LargestFilesSize.invalid">
+                                    {{getErrorMessage(fileCompressForm, 'LargestFilesSize')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="20" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <mat-label>Files for Compress</mat-label>
+
+                                <mat-select formControlName="FilesForCompress" appearance="outline" required>
+                                    <mat-option value="">Select Files for Compress</mat-option>
+                                    <mat-option value="10">10</mat-option>
+                                    <mat-option value="500">500</mat-option>
+                                    <mat-option value="1000">1000</mat-option>
+                                    <mat-option value="5000">5000</mat-option>
+                                    <mat-option value="10000">10000</mat-option>
+                                    <mat-option value="10000">25000</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="fileCompressForm.controls.FilesForCompress.invalid">
+                                    {{getErrorMessage(fileCompressForm, 'FilesForCompress')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <div fxFlex="15" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <div class="chk-container">
+                                    <span class="checkbox-space">Is Watermark Allowed?</span>
+                                    <mat-checkbox matInput formControlName="IsWatermarkAllowed">
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="filter-button" fxFlex="20" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <button mat-raised-button class="fuse-blue" color="accent"
+                                    (click)="compressFiles()"><span>Compress Files</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-content p-24">
+                    <form name="syncServiceForm" [formGroup]="syncServiceForm" class="setting w-100-p" fxLayout="column"
+                        fxFlex>
+                        <mat-label>Lighthouse Sync Services for Pathways</mat-label>
+
+                        <div fxLayout="row" fxLayout.lt-md="column" class="input-row" fxLayoutGap="10px"
+                            fxLayoutGap.lt-md="0px">
+
+                            <mat-form-field appearance="outline" fxFlex="35" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <mat-label>Sync Service Name</mat-label>
+
+                                <mat-select formControlName="SyncServiceName" appearance="outline" required>
+                                    <mat-option value="">Select Sync Service Name</mat-option>
+                                    <mat-option value="SyncMasters">Master Data</mat-option>
+                                    <mat-option value="SyncSchools">Schools</mat-option>
+                                    <mat-option value="SyncHeadMasters">Head Masters</mat-option>
+                                    <mat-option value="SyncVocationalTrainingProviders">Vocational Training Providers</mat-option>
+                                    <mat-option value="SyncVocationalCoordinators">Vocational Coordinators</mat-option>
+                                    <mat-option value="SyncVocationalTrainers">Vocational Trainers</mat-option>
+                                    <mat-option value="SyncStudents">Students</mat-option>
+                                    <mat-option value="SyncSchoolClassSections">School Class Sections</mat-option>
+                                    <mat-option value="SyncSchoolSectorJobRoles">School Sector JobRoles</mat-option>
+                                    <mat-option value="SyncSchoolSectorJobRoleVTP">School Sector JobRole VTP</mat-option>
+                                    <mat-option value="SyncSchoolSectorJobRoleVTPVC">School SectorJobRole VTP VC</mat-option>
+                                    <mat-option value="SyncSchoolSectorJobRoleClassSectionVT">Sync School Sector JobRole Class Section VT</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="syncServiceForm.controls.SyncServiceName.invalid">
+                                    {{getErrorMessage(syncServiceForm, 'SyncServiceName')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="18" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <mat-label>Sync Date Time</mat-label>
+
+                                <input matInput name="SyncDateTime" formControlName="SyncDateTime" type="datetime-local"
+                                    required>
+                                <mat-error *ngIf="syncServiceForm.controls.SyncDateTime.invalid">
+                                    {{getErrorMessage(syncServiceForm, 'SyncDateTime')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <div class="filter-button" fxFlex="20" fxFlex.lt-md="75" fxFlex.lt-sm="100">
+                                <button mat-raised-button class="fuse-blue" color="accent"
+                                    (click)="syncService()"><span>Sync Service</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

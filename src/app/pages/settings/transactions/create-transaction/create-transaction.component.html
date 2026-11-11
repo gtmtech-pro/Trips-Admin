@@ -1,0 +1,183 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Transaction" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="transaction">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="transactionForm" [formGroup]="transactionForm" class="transaction w-100-p" autocomplete="off"
+                (ngSubmit)="saveOrUpdateTransactionDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/settings/transactions'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Transaction
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/settings/transactions'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4">
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="code">
+                                Code<span class="text-danger">*</span>
+                            </label>
+                            <input id="code" name="code" formControlName="Code" class="form-control" required
+                                maxlength="10" [ngClass]="{'is-invalid': isInvalidControl(form['Code'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Code'])">
+                                {{getErrorMessage(transactionForm, 'Code')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="name">
+                                Name<span class="text-danger">*</span>
+                            </label>
+                            <input id="name" name="name" formControlName="Name" class="form-control" required
+                                maxlength="70" [ngClass]="{'is-invalid': isInvalidControl(form['Name'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Name'])">
+                                {{getErrorMessage(transactionForm, 'Name')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="pageTitle">
+                                Page Title<span class="text-danger">*</span>
+                            </label>
+                            <input id="pageTitle" name="pageTitle" formControlName="PageTitle" class="form-control"
+                                required maxlength="200"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['PageTitle'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['PageTitle'])">
+                                {{getErrorMessage(transactionForm, 'PageTitle')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="pageDescription">
+                                Page Description
+                            </label>
+                            <input id="pageDescription" name="pageDescription" formControlName="PageDescription"
+                                class="form-control" maxlength="500"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['PageDescription'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['PageDescription'])">
+                                {{getErrorMessage(transactionForm, 'PageDescription')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="urlAction">
+                                Url Action<span class="text-danger">*</span>
+                            </label>
+                            <input id="urlAction" name="urlAction" formControlName="UrlAction" class="form-control"
+                                required maxlength="100"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['UrlAction'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['UrlAction'])">
+                                {{getErrorMessage(transactionForm, 'UrlAction')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="urlController">
+                                Url Controller<span class="text-danger">*</span>
+                            </label>
+                            <input id="urlController" name="urlController" formControlName="UrlController"
+                                class="form-control" required maxlength="50"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['UrlController'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['UrlController'])">
+                                {{getErrorMessage(transactionForm, 'UrlController')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="urlPara">
+                                Url Para
+                            </label>
+                            <input id="urlPara" name="urlPara" formControlName="UrlPara" class="form-control"
+                                maxlength="300" [ngClass]="{'is-invalid': isInvalidControl(form['UrlPara'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['UrlPara'])">
+                                {{getErrorMessage(transactionForm, 'UrlPara')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="routeUrl">
+                                Route Url<span class="text-danger">*</span>
+                            </label>
+                            <input id="routeUrl" name="routeUrl" formControlName="RouteUrl" class="form-control"
+                                required maxlength="150" [ngClass]="{'is-invalid': isInvalidControl(form['RouteUrl'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['RouteUrl'])">
+                                {{getErrorMessage(transactionForm, 'RouteUrl')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="displayOrder">
+                                Display Order<span class="text-danger">*</span>
+                            </label>
+                            <input id="displayOrder" name="displayOrder" formControlName="DisplayOrder"
+                                class="form-control" required digitOnly
+                                [ngClass]="{'is-invalid': isInvalidControl(form['DisplayOrder'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['DisplayOrder'])">
+                                {{getErrorMessage(transactionForm, 'DisplayOrder')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="iconUrl">
+                                Icon Url
+                            </label>
+                            <input id="iconUrl" name="iconUrl" formControlName="IconUrl" class="form-control"
+                                maxlength="100" [ngClass]="{'is-invalid': isInvalidControl(form['IconUrl'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['IconUrl'])">
+                                {{getErrorMessage(transactionForm, 'IconUrl')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="remarks">
+                                Remarks
+                            </label>
+                            <input id="remarks" name="remarks" formControlName="Remarks" class="form-control"
+                                maxlength="350" [ngClass]="{'is-invalid': isInvalidControl(form['Remarks'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Remarks'])">
+                                {{getErrorMessage(transactionForm, 'Remarks')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

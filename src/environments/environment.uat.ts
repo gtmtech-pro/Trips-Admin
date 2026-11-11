@@ -3,8 +3,8 @@ export const environment = {
   uat: true,
   stg: false,
   prod: false,
-  ApiBaseUrl: 'https://uat-trips.rakeshtech.com/Services/',
-  ImageBaseUrl: 'https://uat-trips.rakeshtech.com/',
+  ApiBaseUrl: 'http://services.rgtrips.com/Services/',
+  ImageBaseUrl: 'http://services.rgtrips.com/',
   SupportEmailId: 'rakesh.gtmcs@gmail.com',
   AppVersion: '1.0.5',
 };

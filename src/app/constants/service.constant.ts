@@ -15,7 +15,7 @@ export class ServiceConstants {
     public MasterData = {
         GetAll: "TripTracker/GetMasterDataByType",
         UploadExcelData: "DataUpload/UploadExcelData",
-        GetDashboardData: "TripTracker/GetDashboardData",        
+        GetDashboardData: "TripTracker/GetDashboardData",
         GetUniqueId: "TripTracker/GetUniqueId"
     };
 
@@ -659,5 +659,13 @@ export class ServiceConstants {
         GetById: "Transaction/GetTransactionById",
         CreateOrUpdate: "Transaction/CreateOrUpdateTransactionDetails",
         Delete: "Transaction/DeleteTransactionById"
+    };
+
+    public Trip = {
+        GetAll: "Trip/GetTrips",
+        GetAllByCriteria: "Trip/GetTripsByCriteria",
+        GetById: "Trip/GetTripById",
+        CreateOrUpdate: "Trip/CreateOrUpdateTripDetails",
+        Delete: "Trip/DeleteTripById"
     };
 };
