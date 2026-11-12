@@ -1,0 +1,149 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Refund" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="refund">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="refundForm" [formGroup]="refundForm" class="refund w-100-p" autocomplete="off"
+                (ngSubmit)="saveOrUpdateRefundDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/hrms/refunds'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Refund
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/hrms/refunds'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4">
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="TripId">
+                                Trip Id<span class="text-danger">*</span>
+                            </label>
+                            <select id="tripId" name="tripId" formControlName="TripId" class="form-select" data-choices
+                                required [ngClass]="{'is-invalid': isInvalidControl(form['TripId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of tripList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['TripId'])">
+                                {{getErrorMessage(refundForm, 'TripId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="OriginalExpenseId">
+                                Original Expense Id
+                            </label>
+                            <select id="originalExpenseId" name="originalExpenseId" formControlName="OriginalExpenseId"
+                                class="form-select" data-choices
+                                [ngClass]="{'is-invalid': isInvalidControl(form['OriginalExpenseId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of originalExpenseList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['OriginalExpenseId'])">
+                                {{getErrorMessage(refundForm, 'OriginalExpenseId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="ReceivedByTripMemberId">
+                                Received By Trip Member Id<span class="text-danger">*</span>
+                            </label>
+                            <select id="receivedByTripMemberId" name="receivedByTripMemberId"
+                                formControlName="ReceivedByTripMemberId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['ReceivedByTripMemberId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of receivedByTripMemberList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ReceivedByTripMemberId'])">
+                                {{getErrorMessage(refundForm, 'ReceivedByTripMemberId')}}
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="refundDate">
+                                Refund Date<span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <input id="refundDate" name="refundDate" formControlName="RefundDate" type="text"
+                                    class="form-control flatpickr-input" required placeholder="Enter Refund Date"
+                                    mwlFlatpickr [altInput]="true" [convertModelValue]="true"
+                                    [altFormat]="Constants.DateFormatDMY" [dateFormat]="Constants.ServerDateFormatYMD"
+                                    [ngClass]="{'is-invalid': isInvalidControl(form['RefundDate'])}">
+                                <span class="input-group-text">
+                                    <i class="ri-calendar-2-line"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['RefundDate'])">
+                                {{getErrorMessage(refundForm, 'RefundDate')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="notes">
+                                Notes
+                            </label>
+                            <input id="notes" name="notes" formControlName="Notes" class="form-control" maxlength="1000"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['Notes'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Notes'])">
+                                {{getErrorMessage(refundForm, 'Notes')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="refundStatus">
+                                Refund Status
+                            </label>
+                            <input id="refundStatus" name="refundStatus" formControlName="RefundStatus"
+                                class="form-control" maxlength="30"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['RefundStatus'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['RefundStatus'])">
+                                {{getErrorMessage(refundForm, 'RefundStatus')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

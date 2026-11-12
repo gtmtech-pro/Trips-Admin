@@ -26,14 +26,6 @@ export class ServiceConstants {
         GetDashboardSummary: "TripTracker/GetDashboardSummary",
     }
 
-    public AcademicYear = {
-        GetAll: "AcademicYear/GetAcademicYears",
-        GetAllByCriteria: "AcademicYear/GetAcademicYearsByCriteria",
-        GetById: "AcademicYear/GetAcademicYearById",
-        CreateOrUpdate: "AcademicYear/CreateOrUpdateAcademicYearDetails",
-        Delete: "AcademicYear/DeleteAcademicYearById"
-    };
-
     public Account = {
         GetAll: "Account/GetAccounts",
         GetAllByCriteria: "Account/GetAccountsByCriteria",
@@ -131,52 +123,12 @@ export class ServiceConstants {
         GetMonthlyAttendanceReports: "Report/GetMonthlyAttendanceReports",
     };
 
-    public ComplaintRegistration = {
-        GetAll: "ComplaintRegistration/GetComplaintRegistrations",
-        GetAllByCriteria: "ComplaintRegistration​/GetComplaintRegistrationsByCriteria",
-        GetById: "ComplaintRegistration/GetComplaintRegistrationById",
-        CreateOrUpdate: "ComplaintRegistration/CreateOrUpdateComplaintRegistrationDetails",
-        Delete: "ComplaintRegistration/DeleteComplaintRegistrationById",
-    }
-
     public MessageTemplate = {
         GetAll: "MessageTemplate/GetMessageTemplates",
         GetAllByCriteria: "MessageTemplate/GetMessageTemplatesByCriteria",
         GetById: "MessageTemplate/GetMessageTemplateById",
         CreateOrUpdate: "MessageTemplate/CreateOrUpdateMessageTemplateDetails",
         Delete: "MessageTemplate/DeleteMessageTemplateById"
-    };
-
-    public Absconder = {
-        GetAll: "Absconder/GetAbsconders",
-        GetAllByCriteria: "Absconder/GetAbscondersByCriteria",
-        GetById: "Absconder/GetAbsconderById",
-        CreateOrUpdate: "Absconder/CreateOrUpdateAbsconderDetails",
-        Delete: "Absconder/DeleteAbsconderById"
-    };
-
-    public ApplicationDocument = {
-        GetAll: "ApplicationDocument/GetApplicationDocuments",
-        GetAllByCriteria: "ApplicationDocument/GetApplicationDocumentsByCriteria",
-        GetById: "ApplicationDocument/GetApplicationDocumentById",
-        CreateOrUpdate: "ApplicationDocument/CreateOrUpdateApplicationDocumentDetails",
-        Delete: "ApplicationDocument/DeleteApplicationDocumentById"
-    };
-
-    public ApplicationEducation = {
-        GetAll: "ApplicationEducation/GetApplicationEducations",
-        GetAllByCriteria: "ApplicationEducation/GetApplicationEducationsByCriteria",
-        GetById: "ApplicationEducation/GetApplicationEducationById",
-        CreateOrUpdate: "ApplicationEducation/CreateOrUpdateApplicationEducationDetails",
-        Delete: "ApplicationEducation/DeleteApplicationEducationById"
-    };
-
-    public ApplicationExperience = {
-        GetAll: "ApplicationExperience/GetApplicationExperiences",
-        GetAllByCriteria: "ApplicationExperience/GetApplicationExperiencesByCriteria",
-        GetById: "ApplicationExperience/GetApplicationExperienceById",
-        CreateOrUpdate: "ApplicationExperience/CreateOrUpdateApplicationExperienceDetails",
-        Delete: "ApplicationExperience/DeleteApplicationExperienceById"
     };
 
     public AppSetting = {
@@ -187,50 +139,12 @@ export class ServiceConstants {
         Delete: "AppSetting/DeleteAppSettingById"
     };
 
-    public Attendance = {
-        GetAll: "Attendance/GetAttendances",
-        GetAllByCriteria: "Attendance/GetAttendancesByCriteria",
-        GetById: "Attendance/GetAttendanceById",
-        CreateOrUpdate: "Attendance/CreateOrUpdateAttendanceDetails",
-        GetSiteAttendancesById: "Attendance/GetSiteAttendancesById",
-        SaveSiteAttendances: "Attendance/SaveSiteAttendances",
-        GetMonthlyAttendancesById: "Attendance/GetMonthlyAttendancesById",
-        SaveMonthlyAttendances: "Attendance/SaveMonthlyAttendances",
-        Delete: "Attendance/DeleteAttendanceById",
-        ApproveAttendances: "Attendance/ApproveAttendances"
-    };
-
-    public AttendanceLog = {
-        GetAll: "AttendanceLog/GetAttendanceLogs",
-        GetAllByCriteria: "AttendanceLog/GetAttendanceLogsByCriteria",
-        GetById: "AttendanceLog/GetAttendanceLogById",
-        CreateOrUpdate: "AttendanceLog/CreateOrUpdateAttendanceLogDetails",
-        UploadAttendanceLogs: "AttendanceLog/ImportAttendanceLogs",
-        Delete: "AttendanceLog/DeleteAttendanceLogById"
-    };
-
-    public AppraisalCriteria = {
-        GetAll: "AppraisalCriteria/GetAppraisalCriteria",
-        GetAllByCriteria: "AppraisalCriteria/GetAppraisalCriteriaByCriteria",
-        GetById: "AppraisalCriteria/GetAppraisalCriteriaById",
-        CreateOrUpdate: "AppraisalCriteria/CreateOrUpdateAppraisalCriteriaDetails",
-        Delete: "AppraisalCriteria/DeleteAppraisalCriteriaById"
-    };
-
-    public BonusIncentive = {
-        GetAll: "BonusIncentive/GetBonusIncentives",
-        GetAllByCriteria: "BonusIncentive/GetBonusIncentivesByCriteria",
-        GetById: "BonusIncentive/GetBonusIncentiveById",
-        CreateOrUpdate: "BonusIncentive/CreateOrUpdateBonusIncentiveDetails",
-        Delete: "BonusIncentive/DeleteBonusIncentiveById"
-    };
-
-    public ClearenceCertificate = {
-        GetAll: "ClearenceCertificate/GetClearenceCertificates",
-        GetAllByCriteria: "ClearenceCertificate/GetClearenceCertificatesByCriteria",
-        GetById: "ClearenceCertificate/GetClearenceCertificateById",
-        CreateOrUpdate: "ClearenceCertificate/CreateOrUpdateClearenceCertificateDetails",
-        Delete: "ClearenceCertificate/DeleteClearenceCertificateById"
+    public AuditLog = {
+        GetAll: "AuditLog/GetAuditLogs",
+        GetAllByCriteria: "AuditLog/GetAuditLogsByCriteria",
+        GetById: "AuditLog/GetAuditLogById",
+        CreateOrUpdate: "AuditLog/CreateOrUpdateAuditLogDetails",
+        Delete: "AuditLog/DeleteAuditLogById"
     };
 
     public DataType = {
@@ -249,98 +163,12 @@ export class ServiceConstants {
         Delete: "DataValue/DeleteDataValueById"
     };
 
-    public EmployeeBankDetail = {
-        GetAll: "EmployeeBankDetail/GetEmployeeBankDetails",
-        GetAllByCriteria: "EmployeeBankDetail/GetEmployeeBankDetailsByCriteria",
-        GetById: "EmployeeBankDetail/GetEmployeeBankDetailById",
-        CreateOrUpdate: "EmployeeBankDetail/CreateOrUpdateEmployeeBankDetailDetails",
-        Delete: "EmployeeBankDetail/DeleteEmployeeBankDetailById"
-    };
-
-    public EmployeeDocumentDetail = {
-        GetAll: "EmployeeDocumentDetail/GetEmployeeDocumentDetails",
-        GetAllByCriteria: "EmployeeDocumentDetail/GetEmployeeDocumentDetailsByCriteria",
-        GetById: "EmployeeDocumentDetail/GetEmployeeDocumentDetailById",
-        CreateOrUpdate: "EmployeeDocumentDetail/CreateOrUpdateEmployeeDocumentDetailDetails",
-        Delete: "EmployeeDocumentDetail/DeleteEmployeeDocumentDetailById"
-    };
-
-    public EmployeeEducationDetail = {
-        GetAll: "EmployeeEducationDetail/GetEmployeeEducationDetails",
-        GetAllByCriteria: "EmployeeEducationDetail/GetEmployeeEducationDetailsByCriteria",
-        GetById: "EmployeeEducationDetail/GetEmployeeEducationDetailById",
-        CreateOrUpdate: "EmployeeEducationDetail/CreateOrUpdateEmployeeEducationDetailDetails",
-        Delete: "EmployeeEducationDetail/DeleteEmployeeEducationDetailById"
-    };
-
-    public EmployeeExperienceDetail = {
-        GetAll: "EmployeeExperienceDetail/GetEmployeeExperienceDetails",
-        GetAllByCriteria: "EmployeeExperienceDetail/GetEmployeeExperienceDetailsByCriteria",
-        GetById: "EmployeeExperienceDetail/GetEmployeeExperienceDetailById",
-        CreateOrUpdate: "EmployeeExperienceDetail/CreateOrUpdateEmployeeExperienceDetailDetails",
-        Delete: "EmployeeExperienceDetail/DeleteEmployeeExperienceDetailById"
-    };
-
-    public EmployeeLeave = {
-        GetAll: "EmployeeLeave/GetEmployeeLeaves",
-        GetAllByCriteria: "EmployeeLeave/GetEmployeeLeavesByCriteria",
-        GetById: "EmployeeLeave/GetEmployeeLeaveById",
-        CreateOrUpdate: "EmployeeLeave/CreateOrUpdateEmployeeLeaveDetails",
-        Delete: "EmployeeLeave/DeleteEmployeeLeaveById"
-    };
-
-    public EmployeeLoan = {
-        GetAll: "EmployeeLoan/GetEmployeeLoans",
-        GetAllByCriteria: "EmployeeLoan/GetEmployeeLoansByCriteria",
-        GetById: "EmployeeLoan/GetEmployeeLoanById",
-        CreateOrUpdate: "EmployeeLoan/CreateOrUpdateEmployeeLoanDetails",
-        Delete: "EmployeeLoan/DeleteEmployeeLoanById",
-        GetByEmployeeId: "EmployeeLoan/GetEmployeeLoanDetailsByEmployeeId",
-        GetEmployeeLoanSummaryDetailsById: "EmployeeLoan/GetEmployeeLoanSummaryDetailsById",
-    };
-
-    public EmployeeLoanSchedule = {
-        GetAll: "EmployeeLoanSchedule/GetEmployeeLoanSchedules",
-        GetAllByCriteria: "EmployeeLoanSchedule/GetEmployeeLoanSchedulesByCriteria",
-        GetById: "EmployeeLoanSchedule/GetEmployeeLoanScheduleById",
-        CreateOrUpdate: "EmployeeLoanSchedule/CreateOrUpdateEmployeeLoanScheduleDetails",
-        Delete: "EmployeeLoanSchedule/DeleteEmployeeLoanScheduleById"
-    };
-
-    public EmployeeResignation = {
-        GetAll: "EmployeeResignation/GetEmployeeResignations",
-        GetAllByCriteria: "EmployeeResignation/GetEmployeeResignationsByCriteria",
-        GetById: "EmployeeResignation/GetEmployeeResignationById",
-        GetByEmployeeId: "EmployeeResignation/GetResignationDetailByEmployeeId",
-        CreateOrUpdate: "EmployeeResignation/CreateOrUpdateEmployeeResignationDetails",
-        Delete: "EmployeeResignation/DeleteEmployeeResignationById"
-    };
-
-    public EmployeeOvertimeAllowance = {
-        GetAll: "EmployeeOvertimeAllowance/GetEmployeeOvertimeAllowances",
-        GetAllByCriteria: "EmployeeOvertimeAllowance/GetEmployeeOvertimeAllowancesByCriteria",
-        GetById: "EmployeeOvertimeAllowance/GetEmployeeOvertimeAllowanceById",
-        CreateOrUpdate: "EmployeeOvertimeAllowance/CreateOrUpdateEmployeeOvertimeAllowanceDetails",
-        Delete: "EmployeeOvertimeAllowance/DeleteEmployeeOvertimeAllowanceById"
-    };
-
-    public EmployeeSalaryHold = {
-        GetAll: "EmployeeSalaryHold/GetEmployeeSalaryHolds",
-        GetAllByCriteria: "EmployeeSalaryHold/GetEmployeeSalaryHoldsByCriteria",
-        GetById: "EmployeeSalaryHold/GetEmployeeSalaryHoldById",
-        CreateOrUpdate: "EmployeeSalaryHold/CreateOrUpdateEmployeeSalaryHoldDetails",
-        ReleasingEmployeeHoldSalaries: "EmployeeSalaryHold/ReleasingEmployeeHoldSalaries",
-        Delete: "EmployeeSalaryHold/DeleteEmployeeSalaryHoldById"
-    };
-
-    public Employee = {
-        GetAll: "Employee/GetEmployees",
-        GetAllByCriteria: "Employee/GetEmployeesByCriteria",
-        GetById: "Employee/GetEmployeeById",
-        CreateOrUpdate: "Employee/CreateOrUpdateEmployeeDetails",
-        Delete: "Employee/DeleteEmployeeById",
-        GetDesignationSalaryById: "Employee/GetEmployeeDesignationSalaryDetailsByEmployeeId",
-        employeeCode: 'Employee/GetNewEmployeeCode'
+    public Deposit = {
+        GetAll: "Deposit/GetDeposits",
+        GetAllByCriteria: "Deposit/GetDepositsByCriteria",
+        GetById: "Deposit/GetDepositById",
+        CreateOrUpdate: "Deposit/CreateOrUpdateDepositDetails",
+        Delete: "Deposit/DeleteDepositById"
     };
 
     public ErrorLog = {
@@ -351,242 +179,36 @@ export class ServiceConstants {
         Delete: "ErrorLog/DeleteErrorLogById"
     };
 
-    public ExitClearance = {
-        GetAll: "ExitClearance/GetExitClearance",
-        GetAllByCriteria: "ExitClearance/GetExitClearancesByCriteria",
-        GetById: "ExitClearance/GetExitClearanceById",
-        CreateOrUpdate: "ExitClearance/CreateOrUpdateExitClearanceDetails",
-        Delete: "ExitClearance/DeleteExitClearanceById"
-    }
-    public ExitClearanceItems = {
-        GetAll: "ExitClearance/GetExitClearanceItems",
-        GetAllByCriteria: "ExitClearanceItem/GetExitClearanceItemsByCriteria",
-        GetById: "ExitClearanceItem/GetExitClearanceItemById",
-        CreateOrUpdate: "ExitClearanceItem/CreateOrUpdateExitClearanceItemDetails",
-        Delete: "ExitClearanceItem/DeleteExitClearanceItemById"
-    }
-    public ExitInterview = {
-        GetAll: "ExitInterview/GetExitInterviews",
-        GetAllByCriteria: "ExitInterview/GetExitInterviewsByCriteria",
-        GetById: "ExitInterview/GetExitInterviewById",
-        CreateOrUpdate: "ExitInterview/CreateOrUpdateExitInterviewDetails",
-        Delete: "ExitInterview/DeleteExitInterviewById"
+    public ExpenseCategory = {
+        GetAll: "ExpenseCategory/GetExpenseCategories",
+        GetAllByCriteria: "ExpenseCategory/GetExpenseCategoriesByCriteria",
+        GetById: "ExpenseCategory/GetExpenseCategoryById",
+        CreateOrUpdate: "ExpenseCategory/CreateOrUpdateExpenseCategoryDetails",
+        Delete: "ExpenseCategory/DeleteExpenseCategoryById"
     };
 
-    public ExitLetters = {
-        GetAll: "ExitLetter/GetExitLetters",
-        GetAllByCriteria: "ExitLetter/GetExitLettersByCriteria",
-        GetById: "ExitLetter/GetExitLetterById",
-        CreateOrUpdate: "ExitLetter/CreateOrUpdateExitLetterDetails",
-        Delete: "ExitLetter/DeleteExitLetterById"
+    public Expense = {
+        GetAll: "Expense/GetExpense",
+        GetAllByCriteria: "Expense/GetExpensesByCriteria",
+        GetById: "Expense/GetExpenseById",
+        CreateOrUpdate: "Expense/CreateOrUpdateExpenseDetails",
+        Delete: "Expense/DeleteExpenseById"
     };
 
-    public FeedbackRating = {
-        GetAll: "FeedbackRating/GetFeedbackRatings",
-        GetAllByCriteria: "FeedbackRating/GetFeedbackRatingsByCriteria",
-        GetById: "FeedbackRating/GetFeedbackRatingById",
-        CreateOrUpdate: "FeedbackRating/CreateOrUpdateFeedbackRatingDetails",
-        Delete: "FeedbackRating/DeleteFeedbackRatingById"
+    public ExpenseShare = {
+        GetAll: "ExpenseShare/GetExpenseShares",
+        GetAllByCriteria: "ExpenseShare/GetExpenseSharesByCriteria",
+        GetById: "ExpenseShare/GetExpenseShareById",
+        CreateOrUpdate: "ExpenseShare/CreateOrUpdateExpenseShareDetails",
+        Delete: "ExpenseShare/DeleteExpenseShareById"
     };
 
-    public FinancialYear = {
-        GetAll: "FinancialYear/GetFinancialYears",
-        GetAllByCriteria: "FinancialYear/GetFinancialYearsByCriteria",
-        GetById: "FinancialYear/GetFinancialYearById",
-        CreateOrUpdate: "FinancialYear/CreateOrUpdateFinancialYearDetails",
-        Delete: "FinancialYear/DeleteFinancialYearById"
-    };
-
-    public FinalSettlement = {
-        GetAll: "FeedbackRating/GetFinalSettlements",
-        GetAllByCriteria: "FinalSettlement/GetFinalSettlementsByCriteria",
-        GetById: "FinalSettlement/GetFinalSettlementById",
-        CreateOrUpdate: "FinalSettlement/CreateOrUpdateFinalSettlementDetails",
-        Delete: "FinalSettlement/DeleteFinalSettlementById"
-    };
-
-    public ForgotPasswordHistory = {
-        GetAll: "ForgotPasswordHistory/GetForgotPasswordHistories",
-        GetAllByCriteria: "ForgotPasswordHistory/GetForgotPasswordHistoriesByCriteria",
-        GetById: "ForgotPasswordHistory/GetForgotPasswordHistoryById",
-        CreateOrUpdate: "ForgotPasswordHistory/CreateOrUpdateForgotPasswordHistoryDetails",
-        Delete: "ForgotPasswordHistory/DeleteForgotPasswordHistoryById"
-    };
-
-    public FullFinalSettlement = {
-        GetAll: "FullFinalSettlement/GetFullFinalSettlements",
-        GetAllByCriteria: "FullFinalSettlement/GetFullFinalSettlementsByCriteria",
-        GetById: "FullFinalSettlement/GetFullFinalSettlementById",
-        CreateOrUpdate: "FullFinalSettlement/CreateOrUpdateFullFinalSettlementDetails",
-        Delete: "FullFinalSettlement/DeleteFullFinalSettlementById"
-    };
-
-    public GoalSettingTracking = {
-        GetAll: "GoalSettingTracking/GetGoalSettingTrackings",
-        GetAllByCriteria: "GoalSettingTracking/GetGoalSettingTrackingsByCriteria",
-        GetById: "GoalSettingTracking/GetGoalSettingTrackingById",
-        CreateOrUpdate: "GoalSettingTracking/CreateOrUpdateGoalSettingTrackingDetails",
-        Delete: "GoalSettingTracking/DeleteGoalSettingTrackingById"
-    };
-
-    public HiringDecesion = {
-        GetAll: "HiringDecesion/GetHiringDecesions",
-        GetAllByCriteria: "HiringDecesion/GetHiringDecesionsByCriteria",
-        GetById: "HiringDecesion/GetHiringDecesionById",
-        CreateOrUpdate: "HiringDecesion/CreateOrUpdateHiringDecesionDetails",
-        Delete: "HiringDecesion/DeleteHiringDecesionById",
-        getJobApplicantHiringDetailsByInterviewId: "HiringDecesion/GetJobApplicantHiringDetailsByInterviewId",
-        getJobApplicantHiringDetailsByHiringDecesionId: "HiringDecesion/GetJobApplicantHiringDetailsByHiringDecesionId",
-    };
-
-    public InterviewAssessment = {
-        GetAll: "InterviewAssessment/GetInterviewAssessments",
-        GetAllByCriteria: "InterviewAssessment/GetInterviewAssessmentsByCriteria",
-        GetById: "InterviewAssessment/GetInterviewAssessmentById",
-        CreateOrUpdate: "InterviewAssessment/CreateOrUpdateInterviewAssessmentDetails",
-        Delete: "InterviewAssessment/DeleteInterviewAssessmentById"
-    };
-
-    public InterviewReference = {
-        GetAll: "InterviewReference/GetInterviewReferences",
-        GetAllByCriteria: "InterviewReference/GetInterviewReferencesByCriteria",
-        GetById: "InterviewReference/GetInterviewReferenceById",
-        CreateOrUpdate: "InterviewReference/CreateOrUpdateInterviewReferenceDetails",
-        Delete: "InterviewReference/DeleteInterviewReferenceById"
-    };
-
-    public InterviewScheduling = {
-        GetAll: "InterviewScheduling/GetInterviewSchedulings",
-        GetAllByCriteria: "InterviewScheduling/GetInterviewSchedulingsByCriteria",
-        GetById: "InterviewScheduling/GetInterviewSchedulingById",
-        CreateOrUpdate: "InterviewScheduling/CreateOrUpdateInterviewSchedulingDetails",
-        Delete: "InterviewScheduling/DeleteInterviewSchedulingById"
-    };
-
-    public JobAdvertise = {
-        GetAll: "JobAdvertise/GetJobAdvertise",
-        GetAllByCriteria: "JobAdvertise/GetJobAdvertiseByCriteria",
-        GetById: "JobAdvertise/GetJobAdvertiseById",
-        GetByRequisitionId: "JobAdvertise/GetJobAdvertiseByRequisitionId",
-        CreateOrUpdate: "JobAdvertise/CreateOrUpdateJobAdvertiseDetails",
-        Delete: "JobAdvertise/DeleteJobAdvertiseById"
-    };
-
-    public JobApplicant = {
-        GetAll: "JobApplicant/GetJobApplicants",
-        GetAllByCriteria: "JobApplicant/GetJobApplicantsByCriteria",
-        GetById: "JobApplicant/GetJobApplicantById",
-        CreateOrUpdate: "JobApplicant/CreateOrUpdateJobApplicantDetails",
-        Delete: "JobApplicant/DeleteJobApplicantById",
-        ApplicantDetailsByApplicantId: "JobApplicant/GetJobApplicantDetailsByApplicantId"
-    };
-
-    public JobRequisitionStatus = {
-        GetAll: "JobRequisitionStatus/GetJobRequisitionStatus",
-        GetAllByCriteria: "JobRequisitionStatus/GetJobRequisitionStatusByCriteria",
-        GetById: "JobRequisitionStatus/GetJobRequisitionStatusById",
-        CreateOrUpdate: "JobRequisitionStatus/CreateOrUpdateJobRequisitionStatusDetails",
-        Delete: "JobRequisitionStatus/DeleteJobRequisitionStatusById"
-    };
-
-    public JobRequsition = {
-        GetAll: "JobRequsition/GetJobRequsitions",
-        GetAllByCriteria: "JobRequsition/GetJobRequsitionsByCriteria",
-        GetById: "JobRequsition/GetJobRequsitionById",
-        CreateOrUpdate: "JobRequsition/CreateOrUpdateJobRequsitionDetails",
-        Delete: "JobRequsition/DeleteJobRequsitionById"
-    };
-
-    public JoiningLetter = {
-        GetAll: "JoiningLetter/GetJoiningLetters",
-        GetAllByCriteria: "JoiningLetter/GetJoiningLettersByCriteria",
-        GetById: "JoiningLetter/GetJoiningLetterById",
-        CreateOrUpdate: "JoiningLetter/CreateOrUpdateJoiningLetterDetails",
-        Delete: "JoiningLetter/DeleteJoiningLetterById",
-        MoveEmployee: "JoiningLetter/TransferJobApplicantToEmployee",
-        JoiningLetter: "JoiningLetter/JoiningLetter?id="
-    };
-
-    public LeaveApplication = {
-        GetAll: "LeaveApplication/GetLeaveApplications",
-        GetAllByCriteria: "LeaveApplication/GetLeaveApplicationsByCriteria",
-        GetById: "LeaveApplication/GetLeaveApplicationById",
-        CreateOrUpdate: "LeaveApplication/CreateOrUpdateLeaveApplicationDetails",
-        CreateOrUpdateLeaveStatus: "LeaveApplicationStatus/CreateOrUpdateLeaveApplicationStatusDetails",
-        Delete: "LeaveApplication/DeleteLeaveApplicationById"
-    };
-
-    public LeavePolicy = {
-        GetAll: "LeavePolicy/GetLeavePolicies",
-        GetAllByCriteria: "LeavePolicy/GetLeavePoliciesByCriteria",
-        GetById: "LeavePolicy/GetLeavePolicyById",
-        CreateOrUpdate: "LeavePolicy/CreateOrUpdateLeavePolicyDetails",
-        Delete: "LeavePolicy/DeleteLeavePolicyById"
-    };
-
-    public LogoutHistory = {
-        GetAll: "LogoutHistory/GetLogoutHistories",
-        GetAllByCriteria: "LogoutHistory/GetLogoutHistoriesByCriteria",
-        GetById: "LogoutHistory/GetLogoutHistoryById",
-        CreateOrUpdate: "LogoutHistory/CreateOrUpdateLogoutHistoryDetails",
-        Delete: "LogoutHistory/DeleteLogoutHistoryById"
-    };
-
-    public ManagerAssessment = {
-        GetAll: "ManagerAssessment/GetManagerAssessments",
-        GetAllByCriteria: "ManagerAssessment/GetManagerAssessmentsByCriteria",
-        GetById: "ManagerAssessment/GetManagerAssessmentById",
-        CreateOrUpdate: "ManagerAssessment/CreateOrUpdateManagerAssessmentDetails",
-        Delete: "ManagerAssessment/DeleteManagerAssessmentById"
-    };
-
-    public Negotiation = {
-        GetAll: "ManagerAssessment/GetManagerAssessments",
-        GetAllByCriteria: "EmployeeNegotiation/GetEmployeeNegotiationsByCriteria",
-        GetById: "EmployeeNegotiation/GetEmployeeNegotiationById",
-        CreateOrUpdate: "EmployeeNegotiation/CreateOrUpdateEmployeeNegotiationDetails",
-        Delete: "EmployeeNegotiation/DeleteEmployeeNegotiationById"
-    };
-
-    public OfferLetterGeneration = {
-        GetAll: "OfferLetterGeneration/GetOfferLetterGenerations",
-        GetAllByCriteria: "OfferLetterGeneration/GetOfferLetterGenerationsByCriteria",
-        GetById: "OfferLetterGeneration/GetOfferLetterGenerationById",
-        CreateOrUpdate: "OfferLetterGeneration/CreateOrUpdateOfferLetterGenerationDetails",
-        Delete: "OfferLetterGeneration/DeleteOfferLetterGenerationById",
-        OfferLetter: "OfferLetterGeneration/OfferLetter?id="
-    };
-
-    public OnBoardingChecklist = {
-        GetAll: "OnBoardingChecklist/GetOnBoardingChecklists",
-        GetAllByCriteria: "OnBoardingChecklist/GetOnBoardingChecklistsByCriteria",
-        GetById: "OnBoardingChecklist/GetOnBoardingChecklistById",
-        CreateOrUpdate: "OnBoardingChecklist/CreateOrUpdateOnBoardingChecklistDetails",
-        Delete: "OnBoardingChecklist/DeleteOnBoardingChecklistById"
-    };
-
-    public Product = {
-        GetAll: "Product/GetProducts",
-        GetAllByCriteria: "Product/GetProductsByCriteria",
-        GetById: "Product/GetProductById",
-        CreateOrUpdate: "Product/CreateOrUpdateProductDetails",
-        Delete: "Product/DeleteProductById"
-    };
-
-    public Project = {
-        GetAll: "Project/GetProjects",
-        GetAllByCriteria: "Project/GetProjectsByCriteria",
-        GetById: "Project/GetProjectById",
-        CreateOrUpdate: "Project/CreateOrUpdateProjectDetails",
-        Delete: "Project/DeleteProjectById"
-    };
-
-    public PromotionAppraisal = {
-        GetAll: "PromotionAppraisal/GetPromotionAppraisals",
-        GetAllByCriteria: "PromotionAppraisal/GetPromotionAppraisalsByCriteria",
-        GetById: "PromotionAppraisal/GetPromotionAppraisalById",
-        CreateOrUpdate: "PromotionAppraisal/CreateOrUpdatePromotionAppraisalDetails",
-        Delete: "PromotionAppraisal/DeletePromotionAppraisalById"
+    public Friend = {
+        GetAll: "Friend/GetFriends",
+        GetAllByCriteria: "Friend/GetFriendsByCriteria",
+        GetById: "Friend/GetFriendById",
+        CreateOrUpdate: "Friend/CreateOrUpdateFriendDetails",
+        Delete: "Friend/DeleteFriendById"
     };
 
     public QueryLog = {
@@ -595,6 +217,14 @@ export class ServiceConstants {
         GetById: "QueryLog/GetQueryLogById",
         CreateOrUpdate: "QueryLog/CreateOrUpdateQueryLogDetails",
         Delete: "QueryLog/DeleteQueryLogById"
+    };
+
+    public Refund = {
+        GetAll: "Refund/GetRefunds",
+        GetAllByCriteria: "Refund/GetRefundsByCriteria",
+        GetById: "Refund/GetRefundById",
+        CreateOrUpdate: "Refund/CreateOrUpdateRefundDetails",
+        Delete: "Refund/DeleteRefundById"
     };
 
     public Role = {
@@ -613,36 +243,20 @@ export class ServiceConstants {
         Delete: "RoleTransaction/DeleteRoleTransactionById"
     };
 
-    public SalaryProcessing = {
-        GetAll: "SalaryProcessing/GetSalaryProcessings",
-        GetAllByCriteria: "SalaryProcessing/GetSalaryProcessingsByCriteria",
-        GetById: "SalaryProcessing/GetSalaryProcessingById",
-        CreateOrUpdate: "SalaryProcessing/CreateOrUpdateSalaryProcessingDetails",
-        Delete: "SalaryProcessing/DeleteSalaryProcessingById",
-        BulkSalaryProcessingForEmployees: "SalaryProcessing/BulkSalaryProcessingForEmployees",
-        CheckPayrollFinalizedForMonth: "SalaryProcessing/CheckPayrollFinalizedForMonthAsync",
-        GetAllSalaryforFreeze: "SalaryProcessing/GetSalaryProcessingsforFreeze",
-        UpdateSalaryStatus: "SalaryProcessing/UpdateSalaryStatus",
-        SalaryPaySlip: "SalaryProcessing/SalaryPaySlip?id=",
-        GetEmployeePreviousMonthHeldSalaryById: "SalaryProcessing/GetEmployeePreviousMonthHeldSalaryById",
+    public Settlement = {
+        GetAll: "Settlement/GetSettlements",
+        GetAllByCriteria: "Settlement/GetSettlementsByCriteria",
+        GetById: "Settlement/GetSettlementById",
+        CreateOrUpdate: "Settlement/CreateOrUpdateSettlementDetails",
+        Delete: "Settlement/DeleteSettlementById"
     };
 
-    public SalaryStructure = {
-        GetAll: "SalaryStructure/GetSalaryStructures",
-        GetAllByCriteria: "SalaryStructure/GetSalaryStructuresByCriteria",
-        GetById: "SalaryStructure/GetSalaryStructureById",
-        GetByEmployeeId: "SalaryStructure/GetSalaryStructureByEmployeeId",
-        GetSalaryDetailsByEmployeeId: "SalaryStructure/GetSalaryStructureDetailsByEmployeeId",
-        CreateOrUpdate: "SalaryStructure/CreateOrUpdateSalaryStructureDetails",
-        Delete: "SalaryStructure/DeleteSalaryStructureById"
-    };
-
-    public SelfAssessment = {
-        GetAll: "SelfAssessment/GetSelfAssessments",
-        GetAllByCriteria: "SelfAssessment/GetSelfAssessmentsByCriteria",
-        GetById: "SelfAssessment/GetSelfAssessmentById",
-        CreateOrUpdate: "SelfAssessment/CreateOrUpdateSelfAssessmentDetails",
-        Delete: "SelfAssessment/DeleteSelfAssessmentById"
+    public SettlementTransaction = {
+        GetAll: "SettlementTransaction/GetSettlementTransactions",
+        GetAllByCriteria: "SettlementTransaction/GetSettlementTransactionsByCriteria",
+        GetById: "SettlementTransaction/GetSettlementTransactionById",
+        CreateOrUpdate: "SettlementTransaction/CreateOrUpdateSettlementTransactionDetails",
+        Delete: "SettlementTransaction/DeleteSettlementTransactionById"
     };
 
     public SiteHeader = {
@@ -667,6 +281,54 @@ export class ServiceConstants {
         GetById: "Transaction/GetTransactionById",
         CreateOrUpdate: "Transaction/CreateOrUpdateTransactionDetails",
         Delete: "Transaction/DeleteTransactionById"
+    };
+
+    public TripDay = {
+        GetAll: "TripDay/GetTripDays",
+        GetAllByCriteria: "TripDay/GetTripDaysByCriteria",
+        GetById: "TripDay/GetTripDayById",
+        CreateOrUpdate: "TripDay/CreateOrUpdateTripDayDetails",
+        Delete: "TripDay/DeleteTripDayById"
+    };
+
+    public TripInvitation = {
+        GetAll: "TripInvitation/GetTripInvitations",
+        GetAllByCriteria: "TripInvitation/GetTripInvitationsByCriteria",
+        GetById: "TripInvitation/GetTripInvitationById",
+        CreateOrUpdate: "TripInvitation/CreateOrUpdateTripInvitationDetails",
+        Delete: "TripInvitation/DeleteTripInvitationById"
+    };
+
+    public TripMember = {
+        GetAll: "TripMember/GetTripMembers",
+        GetAllByCriteria: "TripMember/GetTripMembersByCriteria",
+        GetById: "TripMember/GetTripMemberById",
+        CreateOrUpdate: "TripMember/CreateOrUpdateTripMemberDetails",
+        Delete: "TripMember/DeleteTripMemberById"
+    };
+
+    public TripNote = {
+        GetAll: "TripNote/GetTripNotes",
+        GetAllByCriteria: "TripNote/GetTripNotesByCriteria",
+        GetById: "TripNote/GetTripNoteById",
+        CreateOrUpdate: "TripNote/CreateOrUpdateTripNoteDetails",
+        Delete: "TripNote/DeleteTripNoteById"
+    };
+
+    public TripPackingItem = {
+        GetAll: "TripPackingItem/GetTripPackingItems",
+        GetAllByCriteria: "TripPackingItem/GetTripPackingItemsByCriteria",
+        GetById: "TripPackingItem/GetTripPackingItemById",
+        CreateOrUpdate: "TripPackingItem/CreateOrUpdateTripPackingItemDetails",
+        Delete: "TripPackingItem/DeleteTripPackingItemById"
+    };
+
+    public TripPlace = {
+        GetAll: "TripPlace/GetTripPlaces",
+        GetAllByCriteria: "TripPlace/GetTripPlacesByCriteria",
+        GetById: "TripPlace/GetTripPlaceById",
+        CreateOrUpdate: "TripPlace/CreateOrUpdateTripPlaceDetails",
+        Delete: "TripPlace/DeleteTripPlaceById"
     };
 
     public Trip = {

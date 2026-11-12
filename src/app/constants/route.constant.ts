@@ -82,6 +82,11 @@ export const RouteConstants = {
     PrivacyPolicy: {
         List: 'privacy-policy',
     },
+    AuditLog: {
+        List: 'audit-logs',
+        New: 'audit-logs/:actionType',
+        Edit: 'audit-logs/:actionType/:auditLogId'
+    },
     DataType: {
         List: 'masters/data-types',
         New: 'masters/data-types/:actionType',
@@ -92,15 +97,35 @@ export const RouteConstants = {
         New: 'masters/data-values/:actionType',
         Edit: 'masters/data-values/:actionType/:dataValueId'
     },
-    Employee: {
-        List: 'hrms/employees',
-        New: 'hrms/employees/:actionType',
-        Edit: 'hrms/employees/:actionType/:employeeId'
+    Deposit: {
+        List: 'trips/deposits',
+        New: 'trips/deposits/:actionType',
+        Edit: 'trips/deposits/:actionType/:depositId'
+    },
+    ExpenseCategory: {
+        List: 'trips/expense-categories',
+        New: 'trips/expense-categories/:actionType',
+        Edit: 'trips/expense-categories/:actionType/:categoryId'
+    },
+    Expense: {
+        List: 'trips/expenses',
+        New: 'trips/expenses/:actionType',
+        Edit: 'trips/expenses/:actionType/:expenseId'
+    },
+    ExpenseShare: {
+        List: 'trips/expense-shares',
+        New: 'trips/expense-shares/:actionType',
+        Edit: 'trips/expense-shares/:actionType/:expenseShareId'
     },
     ErrorLog: {
         List: 'admins/error-logs',
         New: 'admins/error-logs/:actionType',
         Edit: 'admins/error-logs/:actionType/:errorLogId'
+    },
+    Friend: {
+        List: 'trips/friends',
+        New: 'trips/friends/:actionType',
+        Edit: 'trips/friends/:actionType/:employeeId'
     },
     QueryLog: {
         List: 'admins/query-logs',
@@ -112,10 +137,25 @@ export const RouteConstants = {
         New: 'admins/account-transactions/:actionType',
         Edit: 'admins/account-transactions/:actionType/:accountTransactionId'
     },
+    Refund: {
+        List: 'trips/refunds',
+        New: 'trips/refunds/:actionType',
+        Edit: 'trips/refunds/:actionType/:refundId'
+    },
     Role: {
         List: 'settings/roles',
         New: 'settings/roles/:actionType',
         Edit: 'settings/roles/:actionType/:roleId'
+    },
+    Settlement: {
+        List: 'trips/settlements',
+        New: 'trips/settlements/:actionType',
+        Edit: 'trips/settlements/:actionType/:settlementId'
+    },
+    SettlementTransaction: {
+        List: 'trips/settlement-transactions',
+        New: 'trips/settlement-transactions/:actionType',
+        Edit: 'trips/settlement-transactions/:actionType/:settlementTransactionId'
     },
     RoleTransaction: {
         List: 'settings/role-transactions',
@@ -142,9 +182,39 @@ export const RouteConstants = {
         New: 'settings/trip-settings/:actionType',
         Edit: 'settings/trip-settings/:actionType/:settingId'
     },
+    TripDay: {
+        List: 'trips/trip-days',
+        New: 'trips/trip-days/:actionType',
+        Edit: 'trips/trip-days/:actionType/:tripDayId'
+    },
+    TripInvitation: {
+        List: 'trips/trip-invitations',
+        New: 'trips/trip-invitations/:actionType',
+        Edit: 'trips/trip-invitations/:actionType/:invitationId'
+    },
+    TripMember: {
+        List: 'trips/trip-members',
+        New: 'trips/trip-members/:actionType',
+        Edit: 'trips/trip-members/:actionType/:tripMemberId'
+    },
+    TripNote: {
+        List: 'trips/trip-notes',
+        New: 'trips/trip-notes/:actionType',
+        Edit: 'trips/trip-notes/:actionType/:tripNoteId'
+    },
+    TripPackingItem: {
+        List: 'trips/trip-packing-items',
+        New: 'trips/trip-packing-items/:actionType',
+        Edit: 'trips/trip-packing-items/:actionType/:packingItemId'
+    },
+    TripPlace: {
+        List: 'trips/trip-places',
+        New: 'trips/trip-places/:actionType',
+        Edit: 'trips/trip-places/:actionType/:placeId'
+    },
     Trip: {
-        List: 'transaction/trips',
-        New: 'transaction/trips/:actionType',
-        Edit: 'transaction/trips/:actionType/:tripId'
+        List: 'trips/trips',
+        New: 'trips/trips/:actionType',
+        Edit: 'trips/trips/:actionType/:tripId'
     }
 }

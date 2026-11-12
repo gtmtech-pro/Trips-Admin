@@ -1,0 +1,218 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Settlement" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="settlement">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="settlementForm" [formGroup]="settlementForm" class="settlement w-100-p" autocomplete="off"
+                (ngSubmit)="saveOrUpdateSettlementDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/hrms/settlements'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Settlement
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/hrms/settlements'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4">
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="TripId">
+                                Trip<span class="text-danger">*</span>
+                            </label>
+                            <select id="tripId" name="tripId" formControlName="TripId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['TripId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of tripList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['TripId'])">
+                                {{getErrorMessage(settlementForm, 'TripId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="FromTripMemberId">
+                                Trip Member<span class="text-danger">*</span>
+                            </label>
+                            <select id="fromTripMemberId" name="fromTripMemberId" formControlName="FromTripMemberId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['FromTripMemberId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of tripMemberList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['FromTripMemberId'])">
+                                {{getErrorMessage(settlementForm, 'FromTripMemberId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="ToTripMemberId">
+                                Trip Member<span class="text-danger">*</span>
+                            </label>
+                            <select id="toTripMemberId" name="toTripMemberId" formControlName="ToTripMemberId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['ToTripMemberId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of tripMemberList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ToTripMemberId'])">
+                                {{getErrorMessage(settlementForm, 'ToTripMemberId')}}
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="paymentMethod">
+                                Payment Method
+                            </label>
+                            <input id="paymentMethod" name="paymentMethod" formControlName="PaymentMethod" class="form-control"
+                                maxlength="50"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['PaymentMethod'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['PaymentMethod'])">
+                                {{getErrorMessage(settlementForm, 'PaymentMethod')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="settlementDate">
+                                Settlement Date<span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <input id="settlementDate" name="settlementDate" formControlName="SettlementDate"  type="text" class="form-control flatpickr-input" required
+                                    placeholder="Enter Settlement Date" mwlFlatpickr [altInput]="true" [convertModelValue]="true"
+                                    [altFormat]="Constants.DateFormatDMY" [dateFormat]="Constants.ServerDateFormatYMD"
+                                    [ngClass]="{'is-invalid': isInvalidControl(form['SettlementDate'])}">
+                                <span class="input-group-text">
+                                    <i class="ri-calendar-2-line"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['SettlementDate'])">
+                                {{getErrorMessage(settlementForm, 'SettlementDate')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="confirmedDate">
+                                Confirmed Date
+                            </label>
+                            <div class="input-group">
+                                <input id="confirmedDate" name="confirmedDate" formControlName="ConfirmedDate"  type="text" class="form-control flatpickr-input"
+                                    placeholder="Enter Confirmed Date" mwlFlatpickr [altInput]="true" [convertModelValue]="true"
+                                    [altFormat]="Constants.DateFormatDMY" [dateFormat]="Constants.ServerDateFormatYMD"
+                                    [ngClass]="{'is-invalid': isInvalidControl(form['ConfirmedDate'])}">
+                                <span class="input-group-text">
+                                    <i class="ri-calendar-2-line"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ConfirmedDate'])">
+                                {{getErrorMessage(settlementForm, 'ConfirmedDate')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="completedDate">
+                                Completed Date
+                            </label>
+                            <div class="input-group">
+                                <input id="completedDate" name="completedDate" formControlName="CompletedDate"  type="text" class="form-control flatpickr-input"
+                                    placeholder="Enter Completed Date" mwlFlatpickr [altInput]="true" [convertModelValue]="true"
+                                    [altFormat]="Constants.DateFormatDMY" [dateFormat]="Constants.ServerDateFormatYMD"
+                                    [ngClass]="{'is-invalid': isInvalidControl(form['CompletedDate'])}">
+                                <span class="input-group-text">
+                                    <i class="ri-calendar-2-line"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['CompletedDate'])">
+                                {{getErrorMessage(settlementForm, 'CompletedDate')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="settlementStatus">
+                                Settlement Status<span class="text-danger">*</span>
+                            </label>
+                            <input id="settlementStatus" name="settlementStatus" formControlName="SettlementStatus" class="form-control" required
+                                maxlength="20"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['SettlementStatus'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['SettlementStatus'])">
+                                {{getErrorMessage(settlementForm, 'SettlementStatus')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="referenceNo">
+                                Reference No
+                            </label>
+                            <input id="referenceNo" name="referenceNo" formControlName="ReferenceNo" class="form-control"
+                                maxlength="100"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['ReferenceNo'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ReferenceNo'])">
+                                {{getErrorMessage(settlementForm, 'ReferenceNo')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="notes">
+                                Notes
+                            </label>
+                            <input id="notes" name="notes" formControlName="Notes" class="form-control"
+                                maxlength="3500"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['Notes'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Notes'])">
+                                {{getErrorMessage(settlementForm, 'Notes')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="status">
+                                Status
+                            </label>
+                            <input id="status" name="status" formControlName="Status" class="form-control"
+                                maxlength="50"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['Status'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Status'])">
+                                {{getErrorMessage(settlementForm, 'Status')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

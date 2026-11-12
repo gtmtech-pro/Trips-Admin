@@ -1,0 +1,214 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Refunds" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card" id="refundList">
+      <!-- <form> -->
+      <form name="filterForm" [formGroup]="filterForm">
+        <div class="card-header border-2">
+          <div class="row justify-content-between gy-3">
+            <div class="col-lg-2">
+              <h5 class="card-title">Refunds</h5>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="search-box">
+                <input type="text" name="searchText" formControlName="SearchText" class="form-control search"
+                  placeholder="Search refunds..."
+                  (ngModelChange)="performSearchInRefunds()">
+                <i class="ri-search-line search-icon"></i>
+              </div>
+            </div>
+
+            <div class="col-lg-auto">
+              <div class="flex-shrink-0">
+                <div class="d-flex gap-1 flex-wrap">
+                  <button type="button" *ngIf="PageRights.IsAdd" title="Create Refund" class="btn btn-primary"
+                    [routerLink]="['/hrms/refunds', 'new']" skipLocationChange="true" replaceUrl="false">
+                    <i class="ri-add-box-line fs-18"></i>
+                  </button>
+
+                  <button type="button" *ngIf="PageRights.IsExport" title="Export Refunds" class="btn btn-info"
+                    (click)="exportRefundsData()">
+                    <i class="ri-file-download-line fs-18"></i>
+                  </button>
+
+                  <button type="button" title="Show/Hide Filters" class="btn btn-warning" (click)="showHideFilters()">
+                    <i class="ri-equalizer-fill fs-18"></i>
+                  </button>
+
+                  <button type="button" title="Refresh Refunds Data" class="btn btn-success"
+                    (click)="resetRefundsFilters()">
+                    <i class="ri-refresh-line fs-18"></i>
+                  </button>
+
+                  <button type="button" id="delete-actions" *ngIf="PageRights.IsDelete"
+                    title="Delete selected refunds" class="btn btn-soft-danger hidden"
+                    [ngClass]="{'delete-actions': CheckedDeletedIds.length > 0}" (click)="deleteMultipleRefunds()">
+                    <i class="ri-delete-bin-2-line fs-18"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+        <div class="card-body border border-dashed border-end-0 border-start-0" *ngIf="IsShowFilter">
+          <div class="row g-3 mt-1">
+            <div class="col-xxl-2 col-sm-4">
+              <input type="text" name="name" formControlName="Name" class="form-control"
+                placeholder="Search by Name">
+            </div>
+
+            <div class="col-xxl-2 col-sm-4">
+              <select name="status" formControlName="Status" class="form-select" data-choices data-plugin="choices">
+                <option value="null" selected>All Refunds</option>
+                <option value="true">Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+
+            <div class="col-xxl-3 col-sm-4">
+              <div class="d-flex gap-2 flex-wrap">
+                <button type="button" class="btn btn-secondary btn-load btn-label waves-effect waves-light rounded-pill"
+                  (click)="onLoadRefundsByFilters()">
+                  <i class="ri-search-line label-icon align-middle rounded-pill fs-16 me-2"></i> Search
+                </button>
+
+                <button type="button" class="btn btn-info btn-load btn-label waves-effect waves-light rounded-pill"
+                  (click)="resetRefundsFilters()">
+                  <i class="ri-delete-back-2-line label-icon align-middle rounded-pill fs-16 me-2"></i> Reset
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </form>
+      <!-- </form> -->
+
+      <div class="card-body pt-0">
+        <div>
+          <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav nav-tabs nav-tabs-custom nav-success mb-3" role="tablist">
+
+            <li [ngbNavItem]="1" class="nav-item">
+              <a ngbNavLink class="nav-link All py-3" data-bs-toggle="tab" id="All"
+                (click)="onLoadRefundsByStatus(null)" href="javascript:void(0);" role="tab" aria-selected="true">
+                All Refund
+              </a>
+            </li>
+
+            <li [ngbNavItem]="2" class="nav-item">
+              <a ngbNavLink class="nav-link py-3 Active" data-bs-toggle="tab" id="Active"
+                (click)="onLoadRefundsByStatus('true')" href="javascript:void(0);" role="tab" aria-selected="false">
+                Active
+              </a>
+            </li>
+
+            <li [ngbNavItem]="3" class="nav-item">
+              <a ngbNavLink class="nav-link py-3 Inactive" data-bs-toggle="tab" id="Inactive"
+                (click)="onLoadRefundsByStatus('false')" href="javascript:void(0);" role="tab"
+                aria-selected="false">
+                Inactive <span class="badge bg-danger align-middle ms-1"></span>
+              </a>
+            </li>
+          </ul>
+
+          <!-- table -->
+          <div class="table-responsive table-card mb-2">
+            <table class="table table-nowrap align-middle" id="transactionsTable" appStickyTable [stickyHeader]="true"
+              [stickyCols]="2" [stickyRightCols]="1" [tableHeight]="'50vh'">
+              <thead class="text-muted table-light">
+                <tr>
+                  <th scope="col" style="width: 25px;">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="checkAll" value="option"
+                        (change)="checkUncheckAllRefunds($event)">
+                    </div>
+                  </th>
+                  <th>Trip Id</th>
+                  <th>Original Expense Id</th>
+                  <th>Received By Trip Member Id</th>
+                  <th>Amount</th>
+                  <th>Base Amount</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody class="list form-check-all">
+                @for(dataItem of refunds;track $index){
+                <tr id="a_{{dataItem.RefundId}}">
+                  <th scope="row">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="checkAll" value="{{dataItem.RefundId}}"
+                        [(ngModel)]="dataItem.state" (change)="onSelectedRefund($event)">
+                    </div>
+                  </th>
+                  <td class="tripId">{{dataItem.TripId}}</td>
+                  <td class="originalExpenseId">{{dataItem.OriginalExpenseId}}</td>
+                  <td class="receivedByTripMemberId">{{dataItem.ReceivedByTripMemberId}}</td>
+                  <td class="amount">{{dataItem.Amount}}</td>
+                  <td class="baseAmount">{{dataItem.BaseAmount}}</td>
+                  <td class="isActive">
+                    <span class="badge text-uppercase" [ngClass]="{'bg-danger-subtle text-danger': dataItem.IsActive == false,
+                                  'bg-success-subtle text-success': dataItem.IsActive == true}">
+                      {{dataItem.IsActive}}</span>
+                  </td>
+                  <td>
+                    <ul class="list-inline hstack gap-2 mb-0">
+                      <li *ngIf="PageRights.IsView" class="list-inline-item" data-bs-toggle="tooltip"
+                        data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="View">
+                        <a [routerLink]="['/hrms/refunds', 'view', dataItem.RefundId]"
+                          skipLocationChange="true" replaceUrl="false" class="text-primary d-inline-block">
+                          <i class="ri-eye-fill fs-16"></i>
+                        </a>
+                      </li>
+                      <li *ngIf="PageRights.IsEdit" class="list-inline-item edit" data-bs-toggle="tooltip"
+                        data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Edit">
+                        <a [routerLink]="['/hrms/refunds', 'edit', dataItem.RefundId]"
+                          skipLocationChange="true" replaceUrl="false"
+                          class="text-primary d-inline-block edit-item-btn">
+                          <i class="ri-pencil-fill fs-16"></i>
+                        </a>
+                      </li>
+                      <li *ngIf="PageRights.IsDelete" class="list-inline-item me-0" data-bs-toggle="tooltip"
+                        data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
+                        <a class="text-danger d-inline-block remove-item-btn"
+                          (click)="onDeleteRefund([dataItem.RefundId])">
+                          <i class="ri-delete-bin-5-fill fs-16"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+
+          <!-- pagination -->
+          <ngb-pagination class="d-flex justify-content-end pagination-rounded-flat pagination-success pt-2"
+            [collectionSize]="paginationService.TotalRows" [(page)]="paginationService.PageIndex"
+            [pageSize]="paginationService.PageSize" [maxSize]="5" aria-label="Custom pagination" [rotate]="true"
+            [boundaryLinks]="true" (click)="onPageIndexChanged($event)">
+
+            <ng-template ngbPaginationFirst>First</ng-template>
+            <ng-template ngbPaginationLast>Last</ng-template>
+            <ng-template ngbPaginationPrevious>Prev</ng-template>
+            <ng-template ngbPaginationNext>Next</ng-template>
+            <ng-template ngbPaginationEllipsis>...</ng-template>
+            <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+          </ngb-pagination>
+          </div>
+
+          <div id="elmLoader">
+            <div class="spinner-border text-primary avatar-sm" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end col-->
+</div>

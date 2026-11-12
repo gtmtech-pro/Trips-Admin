@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ShowDialogService } from '../../../../shared/show-dialog.service';
 import { BaseComponent } from '../../../../common/base/base.component';
 import { CommonService } from '../../../../services/common.service';
-import { RouteConstants } from '../../../../constants/route.constant'
+import { RouteConstants } from '../../../../constants/route.constant';
 import { TransactionService } from '../transaction.service';
 import { TransactionModel } from '../transaction.model';
 

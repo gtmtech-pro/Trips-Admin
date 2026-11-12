@@ -1,0 +1,112 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Trip Note" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="trip-note">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="tripNoteForm" [formGroup]="tripNoteForm" class="tripNote w-100-p" autocomplete="off"
+                (ngSubmit)="saveOrUpdateTripNoteDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/hrms/trip-notes'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Trip Note
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/hrms/trip-notes'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4">
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="TripId">
+                                Trip<span class="text-danger">*</span>
+                            </label>
+                            <select id="tripId" name="tripId" formControlName="TripId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['TripId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of tripList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['TripId'])">
+                                {{getErrorMessage(tripNoteForm, 'TripId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="ExpenseId">
+                                Expenses
+                            </label>
+                            <select id="expenseId" name="expenseId" formControlName="ExpenseId" class="form-select" data-choices
+                                [ngClass]="{'is-invalid': isInvalidControl(form['ExpenseId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of expensList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ExpenseId'])">
+                                {{getErrorMessage(tripNoteForm, 'ExpenseId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="noteTitle">
+                                Note Title
+                            </label>
+                            <input id="noteTitle" name="noteTitle" formControlName="NoteTitle" class="form-control"
+                                maxlength="200"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['NoteTitle'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['NoteTitle'])">
+                                {{getErrorMessage(tripNoteForm, 'NoteTitle')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="noteText">
+                                Note Text<span class="text-danger">*</span>
+                            </label>
+                            <input id="noteText" name="noteText" formControlName="NoteText" class="form-control" required
+                                maxlength="3500"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['NoteText'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['NoteText'])">
+                                {{getErrorMessage(tripNoteForm, 'NoteText')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

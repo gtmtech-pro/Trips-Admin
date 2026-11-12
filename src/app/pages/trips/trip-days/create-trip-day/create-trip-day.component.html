@@ -1,0 +1,126 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Trip Day" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="trip-day">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="tripDayForm" [formGroup]="tripDayForm" class="tripDay w-100-p" autocomplete="off"
+                (ngSubmit)="saveOrUpdateTripDayDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/hrms/trip-days'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Trip Day
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/hrms/trip-days'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4">
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="TripId">
+                                Trip<span class="text-danger">*</span>
+                            </label>
+                            <select id="tripId" name="tripId" formControlName="TripId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['TripId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of tripList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['TripId'])">
+                                {{getErrorMessage(tripDayForm, 'TripId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="dayNumber">
+                                Day Number<span class="text-danger">*</span>
+                            </label>
+                            <input id="dayNumber" name="dayNumber" formControlName="DayNumber" class="form-control" required digitOnly
+                                [ngClass]="{'is-invalid': isInvalidControl(form['DayNumber'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['DayNumber'])">
+                                {{getErrorMessage(tripDayForm, 'DayNumber')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="tripDate">
+                                Trip Date<span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <input id="tripDate" name="tripDate" formControlName="TripDate"  type="text" class="form-control flatpickr-input" required
+                                    placeholder="Enter Trip Date" mwlFlatpickr [altInput]="true" [convertModelValue]="true"
+                                    [altFormat]="Constants.DateFormatDMY" [dateFormat]="Constants.ServerDateFormatYMD"
+                                    [ngClass]="{'is-invalid': isInvalidControl(form['TripDate'])}">
+                                <span class="input-group-text">
+                                    <i class="ri-calendar-2-line"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['TripDate'])">
+                                {{getErrorMessage(tripDayForm, 'TripDate')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="title">
+                                Title
+                            </label>
+                            <input id="title" name="title" formControlName="Title" class="form-control"
+                                maxlength="200"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['Title'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Title'])">
+                                {{getErrorMessage(tripDayForm, 'Title')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="notes">
+                                Notes
+                            </label>
+                            <input id="notes" name="notes" formControlName="Notes" class="form-control"
+                                maxlength="1000"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['Notes'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Notes'])">
+                                {{getErrorMessage(tripDayForm, 'Notes')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

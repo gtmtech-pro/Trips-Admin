@@ -1,0 +1,91 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Expense Share" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="expense-share">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="expenseShareForm" [formGroup]="expenseShareForm" class="expenseShare w-100-p" autocomplete="off"
+                (ngSubmit)="saveOrUpdateExpenseShareDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/hrms/expense-shares'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Expense Share
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/hrms/expense-shares'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4">
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="ExpenseId">
+                                Expens<span class="text-danger">*</span>
+                            </label>
+                            <select id="expenseId" name="expenseId" formControlName="ExpenseId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['ExpenseId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of expenseList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ExpenseId'])">
+                                {{getErrorMessage(expenseShareForm, 'ExpenseId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="TripMemberId">
+                                Trip Member<span class="text-danger">*</span>
+                            </label>
+                            <select id="tripMemberId" name="tripMemberId" formControlName="TripMemberId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['TripMemberId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of tripMemberList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['TripMemberId'])">
+                                {{getErrorMessage(expenseShareForm, 'TripMemberId')}}
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
