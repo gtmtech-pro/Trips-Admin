@@ -1,0 +1,177 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Data Value" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="data-value">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="dataValueForm" [formGroup]="dataValueForm" class="dataValue w-100-p" autocomplete="off"
+                (ngSubmit)="saveOrUpdateDataValueDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/masters/data-values'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Data Value
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/masters/data-values'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <label class="form-label" for="dataValueId">
+                                Data Value Id<span class="text-danger">*</span>
+                            </label>
+                            <input id="dataValueId" name="dataValueId" formControlName="DataValueId"
+                                class="form-control" required maxlength="10"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['DataValueId'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['DataValueId'])">
+                                {{getErrorMessage(dataValueForm, 'DataValueId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="dataTypeId">
+                                Data Type Id<span class="text-danger">*</span>
+                            </label>
+                            <select id="dataTypeId" name="dataTypeId" formControlName="DataTypeId" class="form-select"
+                                data-choices required [ngClass]="{'is-invalid': isInvalidControl(form['DataTypeId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of dataTypeList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['DataTypeId'])">
+                                {{getErrorMessage(dataValueForm, 'DataTypeId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="parentId">
+                                Parent Id
+                            </label>
+                            <input id="parentId" name="parentId" formControlName="ParentId" class="form-control"
+                                maxlength="50" [ngClass]="{'is-invalid': isInvalidControl(form['ParentId'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ParentId'])">
+                                {{getErrorMessage(dataValueForm, 'ParentId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="code">
+                                Code
+                            </label>
+                            <input id="code" name="code" formControlName="Code" class="form-control" maxlength="10"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['Code'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Code'])">
+                                {{getErrorMessage(dataValueForm, 'Code')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="name">
+                                Name<span class="text-danger">*</span>
+                            </label>
+                            <input id="name" name="name" formControlName="Name" class="form-control" required
+                                maxlength="200" [ngClass]="{'is-invalid': isInvalidControl(form['Name'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Name'])">
+                                {{getErrorMessage(dataValueForm, 'Name')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="description">
+                                Description
+                            </label>
+                            <input id="description" name="description" formControlName="Description"
+                                class="form-control" maxlength="350"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['Description'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Description'])">
+                                {{getErrorMessage(dataValueForm, 'Description')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="displayOrder">
+                                Display Order<span class="text-danger">*</span>
+                            </label>
+                            <input id="displayOrder" name="displayOrder" formControlName="DisplayOrder"
+                                class="form-control" required digitOnly
+                                [ngClass]="{'is-invalid': isInvalidControl(form['DisplayOrder'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['DisplayOrder'])">
+                                {{getErrorMessage(dataValueForm, 'DisplayOrder')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="filterValue1">
+                                Filter Value1
+                            </label>
+                            <input id="filterValue1" name="filterValue1" formControlName="FilterValue1"
+                                class="form-control" maxlength="50"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['FilterValue1'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['FilterValue1'])">
+                                {{getErrorMessage(dataValueForm, 'FilterValue1')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="filterValue2">
+                                Filter Value2
+                            </label>
+                            <input id="filterValue2" name="filterValue2" formControlName="FilterValue2"
+                                class="form-control" maxlength="50"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['FilterValue2'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['FilterValue2'])">
+                                {{getErrorMessage(dataValueForm, 'FilterValue2')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="filterValue3">
+                                Filter Value3
+                            </label>
+                            <input id="filterValue3" name="filterValue3" formControlName="FilterValue3"
+                                class="form-control" maxlength="50"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['FilterValue3'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['FilterValue3'])">
+                                {{getErrorMessage(dataValueForm, 'FilterValue3')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

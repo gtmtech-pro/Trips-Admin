@@ -26,6 +26,7 @@ import { ToastsContainer } from './dashboards/dashboard/toasts-container.compone
 import { DashboardsModule } from "./dashboards/dashboards.module";
 import { TripsModule } from './trips/trips.module';
 import { SettingsModule } from './settings/settings.module';
+import { MastersModule } from './masters/masters.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { SettingsModule } from './settings/settings.module';
     SharedModule,
     SlickCarouselModule,
     LightboxModule,
+    MastersModule,
     SettingsModule,
     TripsModule,
     DashboardsModule

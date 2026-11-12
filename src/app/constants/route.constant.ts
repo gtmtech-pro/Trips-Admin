@@ -105,9 +105,9 @@ export const RouteConstants = {
         Edit: 'hrms/absconders/:actionType/:absconderId'
     },
     AppSetting: {
-        List: 'app-settings',
-        New: 'app-settings/:actionType',
-        Edit: 'app-settings/:actionType/:settingId'
+        List: 'trip-settings',
+        New: 'trip-settings/:actionType',
+        Edit: 'trip-settings/:actionType/:settingId'
     },
     Attendance: {
         List: 'hrms/attendances',

@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DataTypeComponent } from './data-type.component';
 
-import { SettingComponent } from './setting.component';
-
-describe('SettingComponent', () => {
-  let component: SettingComponent;
-  let fixture: ComponentFixture<SettingComponent>;
+describe('DataTypeComponent', () => {
+  let component: DataTypeComponent;
+  let fixture: ComponentFixture<DataTypeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingComponent ]
+      declarations: [DataTypeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingComponent);
+    fixture = TestBed.createComponent(DataTypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -73,5 +73,120 @@
             display: none;
         }
     }
+}
 
+.footer {
+    padding: 10px !important;
+    height: 40px !important;
+}
+
+.page-content {
+    padding-bottom: 5px !important;
+}
+
+.card {
+    margin-bottom: 45px !important;
+}
+
+.login-container {
+    height: 415px !important;
+}
+
+.form-control:disabled {
+    background-color: #f2f2f25e !important;
+    opacity: 1;
+}
+
+.form-select:disabled {
+    background-color: #f2f2f25e !important;
+}
+
+.delete-actions {
+    display: block !important;
+    opacity: 1 !important;
+    color: white !important;
+    background-color: #ef5434 !important;
+}
+
+.approved-actions {
+    display: block !important;
+    opacity: 1 !important;
+    color: white !important;
+    background-color: #579c1a !important;
+}
+
+.rejected-actions {
+    display: block !important;
+    opacity: 1 !important;
+    color: white !important;
+    background-color: #a64d3c !important;
+}
+
+.form-check-label {
+    margin-right: 20px;
+}
+
+.back-trans-action {
+    margin-right: 15px;
+}
+
+
+.action-icon {
+    margin-bottom: 4px;
+    height: 14px;
+    margin-right: 8px;
+}
+
+.field-sections {
+    margin-bottom: 20px !important;
+    border: 1px solid #e5dfdf;
+    padding: 5px 12px 12px 10px;
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 2px 16px 10px 16px !important;
+}
+
+.download-icon {
+    margin-left: 15px;
+    height: 25px;
+}
+
+.delete-icon {
+    margin-left: 5px;
+    height: 18px !important;
+    box-shadow: none !important;
+}
+
+.click-disabled {
+    pointer-events: none;
+}
+
+.all-caps {
+    text-transform: uppercase;
+}
+
+.all-small {
+    text-transform: lowercase;
+}
+
+.breadcrumb-a {
+    cursor: pointer;
+}
+
+.ng-placeholder {
+    color: #212529 !important;
+}
+
+.ng-select .ng-select-container {
+    border: none !important;
+}
+
+.check-box-form {
+    align-self: center;
+
+    .check-box-field {
+        margin-top: 18px;
+    }
 }

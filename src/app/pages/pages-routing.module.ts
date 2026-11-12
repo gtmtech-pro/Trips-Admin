@@ -6,11 +6,13 @@ import { DashboardComponent } from "./dashboards/dashboard/dashboard.component";
 
 const routes: Routes = [
   {
-    path: "",
-    component: DashboardComponent
+    path: "", component: DashboardComponent
   },
   {
     path: '', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule)
+  },
+  {
+    path: 'masters', loadChildren: () => import('./masters/masters.module').then(m => m.MastersModule)
   },
   {
     path: 'apps', loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule)

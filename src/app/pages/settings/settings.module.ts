@@ -52,6 +52,9 @@ import { SiteHeaderService } from './site-headers/site-header.service';
 import { SiteSubHeaderComponent } from './site-sub-headers/site-sub-header.component';
 import { CreateSiteSubHeaderComponent } from './site-sub-headers/create-site-sub-header/create-site-sub-header.component';
 import { SiteSubHeaderService } from './site-sub-headers/site-sub-header.service';
+import { AppSettingComponent } from '../settings/app-settings/app-setting.component';
+import { CreateAppSettingComponent } from '../settings/app-settings/create-app-setting/create-app-setting.component';
+import { AppSettingService } from '../settings/app-settings/app-setting.service';
 import { StickyTableDirective } from '../../shared/sticky-table.directive';
 import { StickyTableScrollDirective } from '../../shared/sticky-table-scroll.directive';
 
@@ -72,7 +75,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
         SiteHeaderComponent,
         CreateSiteHeaderComponent,
         SiteSubHeaderComponent,
-        CreateSiteSubHeaderComponent
+        CreateSiteSubHeaderComponent,
+        AppSettingComponent,
+        CreateAppSettingComponent,
     ],
     imports: [
         CommonModule,
@@ -105,6 +110,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
         SiteHeaderService,
         SiteSubHeaderService,
         RoleTransactionService,
+        AppSettingService,
         { provide: DROPZONE_CONFIG, useValue: DEFAULT_DROPZONE_CONFIG }
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

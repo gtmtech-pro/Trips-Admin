@@ -14,6 +14,8 @@ import { SiteHeaderComponent } from './site-headers/site-header.component';
 import { CreateSiteHeaderComponent } from './site-headers/create-site-header/create-site-header.component';
 import { SiteSubHeaderComponent } from './site-sub-headers/site-sub-header.component';
 import { CreateSiteSubHeaderComponent } from './site-sub-headers/create-site-sub-header/create-site-sub-header.component';
+import { AppSettingComponent } from '../settings/app-settings/app-setting.component';
+import { CreateAppSettingComponent } from '../settings/app-settings/create-app-setting/create-app-setting.component';
 
 const routes: Routes = [
   { path: RouteConstants.Role.List, component: RoleComponent, canActivate: [AuthGuard] },
@@ -35,6 +37,10 @@ const routes: Routes = [
   { path: RouteConstants.SiteSubHeader.List, component: SiteSubHeaderComponent, canActivate: [AuthGuard] },
   { path: RouteConstants.SiteSubHeader.New, component: CreateSiteSubHeaderComponent, canActivate: [AuthGuard] },
   { path: RouteConstants.SiteSubHeader.Edit, component: CreateSiteSubHeaderComponent, canActivate: [AuthGuard] },
+
+  { path: RouteConstants.AppSetting.List, component: AppSettingComponent, canActivate: [AuthGuard] },
+  { path: RouteConstants.AppSetting.New, component: CreateAppSettingComponent, canActivate: [AuthGuard] },
+  { path: RouteConstants.AppSetting.Edit, component: CreateAppSettingComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
