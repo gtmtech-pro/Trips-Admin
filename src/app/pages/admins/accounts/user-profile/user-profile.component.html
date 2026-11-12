@@ -1,0 +1,389 @@
+<div class="position-relative mx-n4 mt-n4">
+    <div class="profile-wid-bg profile-setting-img">
+        <img src="assets/images/profile-bg.jpg" class="profile-wid-img" alt="">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xxl-9">
+        <div class="card mt-xxl-n5">
+            <div class="card-header">
+                <ul ngbNav #customNav="ngbNav" [activeId]="1"
+                    class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
+                    <li [ngbNavItem]="1" class="nav-item">
+                        <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
+                            <i class="fas fa-home"></i>
+                            Personal Details
+                        </a>
+                        <ng-template ngbNavContent>
+                            <form action="javascript:void(0);">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control" value="{{accountModel.FirstName}}"
+                                                readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Middle Name</label>
+                                            <input type="text" class="form-control" value="{{accountModel.MiddleName}}"
+                                                readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" value="{{accountModel.LastName}}"
+                                                readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">User Name</label>
+                                            <input type="text" class="form-control" value="{{accountModel.UserName}}"
+                                                readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Mobile No</label>
+                                            <input type="text" class="form-control" value="{{accountModel.Mobile}}"
+                                                readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Email Id</label>
+                                            <input type="text" class="form-control" value="{{accountModel.EmailId}}"
+                                                readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Role Name</label>
+                                            <input type="text" class="form-control" value="{{accountModel.RoleName}}"
+                                                readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Department Name</label>
+                                            <input type="text" class="form-control"
+                                                value="{{accountModel.DepartmentName}}" readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Designation Name</label>
+                                            <input type="text" class="form-control"
+                                                value="{{accountModel.DesignationName}}" readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Reporting To</label>
+                                            <input type="text" class="form-control"
+                                                value="{{accountModel.ReportingToName}}" readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Joining Date</label>
+                                            <input type="text" class="form-control" value="{{accountModel.JoiningDate}}"
+                                                readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="3" class="nav-item">
+                        <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
+                            <i class="far fa-envelope"></i>
+                            Educations
+                        </a>
+                        <ng-template ngbNavContent>
+                            <form>
+                                <div id="newlink">
+                                    <div id="1">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="jobTitle" class="form-label">Job Title</label>
+                                                    <input type="text" class="form-control" id="jobTitle"
+                                                        placeholder="Job title" value="{{accountModel.job_title}}">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="companyName" class="form-label">Company Name</label>
+                                                    <input type="text" class="form-control" id="companyName"
+                                                        placeholder="Company name"
+                                                        value="{{accountModel.company_name}}">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="experienceYear" class="form-label">Experience
+                                                        Years</label>
+                                                    <div class="row">
+                                                        <div class="col-lg-5">
+                                                            <select class="form-control" data-choices
+                                                                data-choices-search-false name="experienceYear"
+                                                                id="experienceYear">
+                                                                <option value="">Select years</option>
+                                                                <option value="Choice 1">2001</option>
+                                                                <option value="Choice 17" selected>2017</option>
+                                                                <option value="Choice 18">2018</option>
+                                                                <option value="Choice 22">2022</option>
+                                                            </select>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-auto align-self-center">
+                                                            to
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-lg-5">
+                                                            <select class="form-control" data-choices
+                                                                data-choices-search-false
+                                                                name="choices-single-default2">
+                                                                <option value="">Select years</option>
+                                                                <option value="Choice 1">2001</option>
+                                                                <option value="Choice 20" selected>2020</option>
+                                                                <option value="Choice 21">2021</option>
+                                                                <option value="Choice 22">2022</option>
+                                                            </select>
+                                                        </div>
+                                                        <!--end col-->
+                                                    </div>
+                                                    <!--end row-->
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="jobDescription" class="form-label">Job
+                                                        Description</label>
+                                                    <textarea class="form-control" id="jobDescription" rows="3"
+                                                        placeholder="Enter description">{{accountModel.job_description}} </textarea>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                        </div>
+                                        <!--end row-->
+                                    </div>
+                                </div>
+                                <!--end col-->
+                            </form>
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="4" class="nav-item">
+                        <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
+                            <i class="far fa-envelope"></i>
+                            Experiences
+                        </a>
+                        <ng-template ngbNavContent>
+                            <form>
+                                <div id="newlink">
+                                    <div id="1">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="jobTitle" class="form-label">Job Title</label>
+                                                    <input type="text" class="form-control" id="jobTitle"
+                                                        placeholder="Job title" value="{{accountModel.job_title}}">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="companyName" class="form-label">Company Name</label>
+                                                    <input type="text" class="form-control" id="companyName"
+                                                        placeholder="Company name"
+                                                        value="{{accountModel.company_name}}">
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="experienceYear" class="form-label">Experience
+                                                        Years</label>
+                                                    <div class="row">
+                                                        <div class="col-lg-5">
+                                                            <select class="form-control" data-choices
+                                                                data-choices-search-false name="experienceYear"
+                                                                id="experienceYear">
+                                                                <option value="">Select years</option>
+                                                                <option value="Choice 1">2001</option>
+                                                                <option value="Choice 17" selected>2017</option>
+                                                                <option value="Choice 18">2018</option>
+                                                                <option value="Choice 19">2019</option>
+                                                                <option value="Choice 22">2022</option>
+                                                            </select>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-auto align-self-center">
+                                                            to
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-lg-5">
+                                                            <select class="form-control" data-choices
+                                                                data-choices-search-false
+                                                                name="choices-single-default2">
+                                                                <option value="">Select years</option>
+                                                                <option value="Choice 19">2019</option>
+                                                                <option value="Choice 20" selected>2020</option>
+                                                                <option value="Choice 21">2021</option>
+                                                                <option value="Choice 22">2022</option>
+                                                            </select>
+                                                        </div>
+                                                        <!--end col-->
+                                                    </div>
+                                                    <!--end row-->
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="jobDescription" class="form-label">Job
+                                                        Description</label>
+                                                    <textarea class="form-control" id="jobDescription" rows="3"
+                                                        placeholder="Enter description">{{accountModel.job_description}} </textarea>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                        </div>
+                                        <!--end row-->
+                                    </div>
+                                </div>
+                                <!--end col-->
+                            </form>
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="2" class="nav-item">
+                        <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
+                            <i class="far fa-user"></i>
+                            Change Password
+                        </a>
+                        <ng-template ngbNavContent>
+                            <form action="javascript:void(0);">
+                                <div class="row g-2">
+                                    <div class="col-lg-4">
+                                        <div>
+                                            <label for="oldpasswordInput" class="form-label">Old Password*</label>
+                                            <input type="password" class="form-control" id="oldpasswordInput"
+                                                placeholder="Enter current password">
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-4">
+                                        <div>
+                                            <label for="newpasswordInput" class="form-label">New Password*</label>
+                                            <input type="password" class="form-control" id="newpasswordInput"
+                                                placeholder="Enter new password">
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-4">
+                                        <div>
+                                            <label for="confirmpasswordInput" class="form-label">Confirm
+                                                Password*</label>
+                                            <input type="password" class="form-control" id="confirmpasswordInput"
+                                                placeholder="Confirm password">
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <a href="javascript:void(0);"
+                                                class="link-primary text-decoration-underline">Forgot Password ?</a>
+                                        </div>
+                                    </div><!--end col-->
+                                    <div class="col-lg-12">
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-success">Change Password</button>
+                                        </div>
+                                    </div><!--end col-->
+                                </div><!--end row-->
+                            </form>
+                        </ng-template>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body p-4">
+                <div class="tab-content">
+                    <div [ngbNavOutlet]="customNav"></div>
+                </div>
+            </div>
+        </div>
+    </div><!--end col-->
+
+    <div class="col-xxl-3">
+        <div class="card mt-n5">
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+                        <img src="assets/images/users/avatar-1.jpg"
+                            class="rounded-circle avatar-xl img-thumbnail user-profile-image shadow"
+                            alt="user-profile-image">
+                        <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
+                            <input id="profile-img-file-input" type="file" class="profile-img-file-input">
+                            <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
+                                <span class="avatar-title rounded-circle bg-light text-body shadow">
+                                    <i class="ri-camera-fill"></i>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <h5 class="fs-16 mb-1">{{accountModel.UserName}}</h5>
+                    <p class="text-muted mb-0">{{accountModel.DesignationName}}</p>
+                </div>
+            </div>
+        </div><!--end card-->
+
+        <div class="card mt-1">
+            <div class="card-body p-4">
+                <h5 class="card-title">Login Histories</h5>
+
+                <!-- table -->
+                <div class="table-responsive table-card mb-2">
+                    <table class="table table-nowrap align-middle" id="logoutHistoryTable" appStickyTable
+                        [stickyHeader]="true" [stickyCols]="2" [stickyRightCols]="1" [tableHeight]="'50vh'">
+                        <thead class="text-muted table-light">
+                            <tr>
+                                <th>Login Id</th>
+                                <th>Login Date</th>
+                                <th>Logout Date</th>
+                                <th>Access From</th>
+                                <th>Device Name</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list form-check-all">
+                            @for(dataItem of loginHistories; track $index){
+                            <tr id="a_{{dataItem.LoginUniqueId}}">
+                                <td class="userId">{{dataItem.UserId}}</td>
+                                <td class="loginOn">{{dataItem.LoginOn}}</td>
+                                <td class="logoutOn">{{dataItem.LogoutOn}}</td>
+                                <td class="accessFrom">{{dataItem.AccessFrom}}</td>
+                                <td class="deviceName">{{dataItem.DeviceName}}</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!--end col-->
+</div><!--end row-->

@@ -24,7 +24,7 @@
               <div class="flex-shrink-0">
                 <div class="d-flex gap-1 flex-wrap">
                   <button type="button" *ngIf="PageRights.IsAdd" title="Create Trip" class="btn btn-primary"
-                    [routerLink]="['/hrms/trips', 'new']" skipLocationChange="true" replaceUrl="false">
+                    [routerLink]="['/transaction/trips', 'new']" skipLocationChange="true" replaceUrl="false">
                     <i class="ri-add-box-line fs-18"></i>
                   </button>
 
@@ -37,9 +37,9 @@
                     <i class="ri-equalizer-fill fs-18"></i>
                   </button>
 
-                  <button type="button" id="delete-actions" *ngIf="PageRights.IsDelete"
-                    title="Delete selected trips" class="btn btn-soft-danger"
-                    [ngClass]="{'delete-actions': CheckedDeletedIds.length > 0}" (click)="deleteMultipleTrips()">
+                  <button type="button" id="delete-actions" *ngIf="PageRights.IsDelete" title="Delete selected trips"
+                    class="btn btn-soft-danger" [ngClass]="{'delete-actions': CheckedDeletedIds.length > 0}"
+                    (click)="deleteMultipleTrips()">
                     <i class="ri-delete-bin-2-line fs-18"></i>
                   </button>
                 </div>
@@ -55,14 +55,13 @@
           <div class="row g-3">
             <div class="col-xxl-5 col-sm-6">
               <input type="text" name="tripName" formControlName="TripName" class="form-control"
-                placeholder="Search for code, name, page title">
+                placeholder="Search by TripName, Destination">
             </div>
             <!--end col-->
 
             <div class="col-xxl-2 col-sm-6">
               <div>
-                <select name="tripStatus" formControlName="TripStatus" class="form-control"
-                  data-plugin="choices">
+                <select name="tripStatus" formControlName="TripStatus" class="form-control" data-plugin="choices">
                   <option value="null" selected>Status</option>
                   <option value="">All</option>
                   <option value="true">Active</option>
@@ -74,11 +73,14 @@
 
             <div class="col-xxl-3 col-sm-6">
               <div class="d-flex gap-2 flex-wrap">
-                <button type="button" class="btn btn-info w-200" (click)="onLoadTripsByFilters()">
-                  <i class="ri-search-line fs-14 search-icon align-bottom"></i>Search
+                <button type="button" class="btn btn-secondary btn-load btn-label waves-effect waves-light rounded-pill"
+                  (click)="onLoadTripsByFilters()">
+                  <i class="ri-search-line label-icon align-middle rounded-pill fs-16 me-2"></i> Search
                 </button>
-                <button type="button" class="btn btn-info w-200" (click)="resetTripsFilters()">
-                  <i class="ri-search-line fs-14 search-icon align-bottom"></i>Reset
+
+                <button type="button" class="btn btn-info btn-load btn-label waves-effect waves-light rounded-pill"
+                  (click)="resetTripsFilters()">
+                  <i class="ri-delete-back-2-line label-icon align-middle rounded-pill fs-16 me-2"></i> Reset
                 </button>
               </div>
             </div>
@@ -94,8 +96,8 @@
           <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav nav-tabs nav-tabs-custom nav-success mb-3" role="tablist">
 
             <li [ngbNavItem]="1" class="nav-item">
-              <a ngbNavLink class="nav-link All py-3" data-bs-toggle="tab" id="All"
-                (click)="onLoadTripsByStatus(null)" href="javascript:void(0);" role="tab" aria-selected="true">
+              <a ngbNavLink class="nav-link All py-3" data-bs-toggle="tab" id="All" (click)="onLoadTripsByStatus(null)"
+                href="javascript:void(0);" role="tab" aria-selected="true">
                 All Trip
               </a>
             </li>
@@ -109,8 +111,7 @@
 
             <li [ngbNavItem]="3" class="nav-item">
               <a ngbNavLink class="nav-link py-3 Inactive" data-bs-toggle="tab" id="Inactive"
-                (click)="onLoadTripsByStatus('false')" href="javascript:void(0);" role="tab"
-                aria-selected="false">
+                (click)="onLoadTripsByStatus('false')" href="javascript:void(0);" role="tab" aria-selected="false">
                 Inactive <span class="badge bg-danger align-middle ms-1"></span>
               </a>
             </li>
@@ -159,23 +160,21 @@
                     <ul class="list-inline hstack gap-2 mb-0">
                       <li *ngIf="PageRights.IsView" class="list-inline-item" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="View">
-                        <a [routerLink]="['/hrms/trips', 'view', dataItem.TripId]"
-                          skipLocationChange="true" replaceUrl="false" class="text-primary d-inline-block">
+                        <a [routerLink]="['/transaction/trips', 'view', dataItem.TripId]" skipLocationChange="true"
+                          replaceUrl="false" class="text-primary d-inline-block">
                           <i class="ri-eye-fill fs-16"></i>
                         </a>
                       </li>
                       <li *ngIf="PageRights.IsEdit" class="list-inline-item edit" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Edit">
-                        <a [routerLink]="['/hrms/trips', 'edit', dataItem.TripId]"
-                          skipLocationChange="true" replaceUrl="false"
-                          class="text-primary d-inline-block edit-item-btn">
+                        <a [routerLink]="['/transaction/trips', 'edit', dataItem.TripId]" skipLocationChange="true"
+                          replaceUrl="false" class="text-primary d-inline-block edit-item-btn">
                           <i class="ri-pencil-fill fs-16"></i>
                         </a>
                       </li>
                       <li *ngIf="PageRights.IsDelete" class="list-inline-item me-0" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
-                        <a class="text-danger d-inline-block remove-item-btn"
-                          (click)="onDeleteTrip([dataItem.TripId])">
+                        <a class="text-danger d-inline-block remove-item-btn" (click)="onDeleteTrip([dataItem.TripId])">
                           <i class="ri-delete-bin-5-fill fs-16"></i>
                         </a>
                       </li>

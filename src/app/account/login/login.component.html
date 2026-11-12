@@ -37,6 +37,9 @@
                                 <h5 class="text-primary">Welcome Back !</h5>
                                 <p class="text-muted">Sign in to continue to Velzon.</p>
                             </div>
+                            <div class="text-center mt-2" *ngIf="isInvalidLogin">
+                                <p class="text-danger">Invalid UserId or Password</p>
+                            </div>
                             <div class="p-2 mt-4">
                                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
@@ -118,7 +121,12 @@
                         <p class="mb-0">Don't have an account ? <a routerLink="/auth/register"
                                 class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
                     </div>
+                </div>
 
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 </div>
             </div>
             <!-- end row -->

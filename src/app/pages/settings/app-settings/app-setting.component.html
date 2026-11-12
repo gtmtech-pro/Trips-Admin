@@ -54,7 +54,7 @@
           <div class="row g-3">
             <div class="col-xxl-5 col-sm-6">
               <input type="text" name="appSettingName" formControlName="AppSettingName" class="form-control"
-                placeholder="Search for Setting Name and Setting Value">
+                placeholder="Search by Setting Name and Setting Value">
             </div>
             <!--end col-->
 
@@ -73,11 +73,14 @@
 
             <div class="col-xxl-3 col-sm-6">
               <div class="d-flex gap-2 flex-wrap">
-                <button type="button" class="btn btn-info w-200" (click)="onLoadAppSettingsByFilters()">
-                  <i class="ri-search-line fs-14 search-icon align-bottom"></i>Search
+                <button type="button" class="btn btn-secondary btn-load btn-label waves-effect waves-light rounded-pill"
+                  (click)="onLoadAppSettingsByFilters()">
+                  <i class="ri-search-line label-icon align-middle rounded-pill fs-16 me-2"></i> Search
                 </button>
-                <button type="button" class="btn btn-info w-200" (click)="resetAppSettingsFilters()">
-                  <i class="ri-search-line fs-14 search-icon align-bottom"></i>Reset
+
+                <button type="button" class="btn btn-info btn-load btn-label waves-effect waves-light rounded-pill"
+                  (click)="resetAppSettingsFilters()">
+                  <i class="ri-delete-back-2-line label-icon align-middle rounded-pill fs-16 me-2"></i> Reset
                 </button>
               </div>
             </div>
@@ -158,15 +161,16 @@
                     <ul class="list-inline hstack gap-2 mb-0">
                       <li *ngIf="PageRights.IsView" class="list-inline-item" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="View">
-                        <a [routerLink]="['/settings/trip-settings', 'view', dataItem.SettingId]" skipLocationChange="true"
-                          replaceUrl="false" class="text-primary d-inline-block">
+                        <a [routerLink]="['/settings/trip-settings', 'view', dataItem.SettingId]"
+                          skipLocationChange="true" replaceUrl="false" class="text-primary d-inline-block">
                           <i class="ri-eye-fill fs-16"></i>
                         </a>
                       </li>
                       <li *ngIf="PageRights.IsEdit" class="list-inline-item edit" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Edit">
-                        <a [routerLink]="['/settings/trip-settings', 'edit', dataItem.SettingId]" skipLocationChange="true"
-                          replaceUrl="false" class="text-primary d-inline-block edit-item-btn">
+                        <a [routerLink]="['/settings/trip-settings', 'edit', dataItem.SettingId]"
+                          skipLocationChange="true" replaceUrl="false"
+                          class="text-primary d-inline-block edit-item-btn">
                           <i class="ri-pencil-fill fs-16"></i>
                         </a>
                       </li>

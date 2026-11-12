@@ -60,7 +60,7 @@
           <div class="row g-3">
             <div class="col-xxl-5 col-sm-6">
               <input type="text" name="roleName" formControlName="RoleName" class="form-control"
-                placeholder="Search for code, name, page title">
+                placeholder="Search by code, name">
             </div>
             <!--end col-->
 
@@ -78,11 +78,14 @@
 
             <div class="col-xxl-3 col-sm-6">
               <div class="d-flex gap-2 flex-wrap">
-                <button type="button" class="btn btn-info w-200" (click)="onLoadRolesByFilters()">
-                  <i class="ri-search-line fs-14 search-icon align-bottom"></i>Search
+                <button type="button" class="btn btn-secondary btn-load btn-label waves-effect waves-light rounded-pill"
+                  (click)="onLoadRolesByFilters()">
+                  <i class="ri-search-line label-icon align-middle rounded-pill fs-16 me-2"></i> Search
                 </button>
-                <button type="button" class="btn btn-info w-200" (click)="resetRolesFilters()">
-                  <i class="ri-search-line fs-14 search-icon align-bottom"></i>Reset
+
+                <button type="button" class="btn btn-info btn-load btn-label waves-effect waves-light rounded-pill"
+                  (click)="resetRolesFilters()">
+                  <i class="ri-delete-back-2-line label-icon align-middle rounded-pill fs-16 me-2"></i> Reset
                 </button>
               </div>
             </div>

@@ -1,0 +1,278 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Account" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="account">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="accountForm" [formGroup]="accountForm" class="account w-100-p" autocomplete="off"
+                (ngSubmit)="saveOrUpdateAccountDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/admins/accounts'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Account
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/admins/accounts'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4 mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label" for="accountId">
+                                Employee Name<span class="text-danger">*</span>
+                            </label>
+                            <ng-select id="accountId" name="accountId" formControlName="AccountId"
+                                [items]="employeeList" bindValue="Id" bindLabel="Name" required
+                                (change)="onChangeEmployee($event)" placeholder="Select Employee" [searchable]="true"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['AccountId']), 'form-control': true}"
+                                style="padding: 0px;">
+                            </ng-select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['AccountId'])">
+                                {{getErrorMessage(accountForm, 'AccountId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label class="form-label" for="DepartmentId">
+                                Department<span class="text-danger">*</span>
+                            </label>
+                            <select id="departmentId" name="departmentId" formControlName="DepartmentId"
+                                class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['DepartmentId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of departmentList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['DepartmentId'])">
+                                {{getErrorMessage(accountForm, 'DepartmentId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="form-label" for="designationId">
+                                Designation<span class="text-danger">*</span>
+                            </label>
+                            <select id="designationId" name="designationId" formControlName="DesignationId"
+                                class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['DesignationId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of designationList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['DesignationId'])">
+                                {{getErrorMessage(accountForm, 'DesignationId')}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-3">
+                        <div class="col-lg-2">
+                            <label class="form-label" for="roleId">
+                                Role Name<span class="text-danger">*</span>
+                            </label>
+                            <select id="roleId" name="roleId" formControlName="RoleId" class="form-select" data-choices
+                                required [ngClass]="{'is-invalid': isInvalidControl(form['RoleId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of roleList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['RoleId'])">
+                                {{getErrorMessage(accountForm, 'RoleId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label class="form-label" for="ReportingToId">
+                                Reporting To (Primary)<span class="text-danger">*</span>
+                            </label>
+                            <ng-select id="reportingToId" name="reportingToId" formControlName="ReportingToId"
+                                [items]="reportingToList" bindValue="Id" bindLabel="Name" required
+                                placeholder="Select Reporting To (Primary)" [searchable]="true"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['ReportingToId']), 'form-control': true}"
+                                style="padding: 0px;">
+                            </ng-select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ReportingToId'])">
+                                {{getErrorMessage(accountForm, 'ReportingToId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <label class="form-label" for="ReportingTo1Id">
+                                Reporting To (Secondary)
+                            </label>
+                            <ng-select id="reportingTo1Id" name="reportingTo1Id" formControlName="ReportingTo1Id"
+                                [items]="reportingTo1List" bindValue="Id" bindLabel="Name"
+                                placeholder="Select Reporting To (Secondary)" [searchable]="true"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['ReportingTo1Id']), 'form-control': true}"
+                                style="padding: 0px;">
+                            </ng-select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ReportingTo1Id'])">
+                                {{getErrorMessage(accountForm, 'ReportingTo1Id')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label class="form-label" for="reportingTo2Id">
+                                Reporting To (Tertiary)
+                            </label>
+                            <ng-select id="reportingTo2Id" name="reportingTo2Id" formControlName="ReportingTo2Id"
+                                [items]="reportingTo2List" bindValue="Id" bindLabel="Name"
+                                placeholder="Select Reporting To (Tertiary)" [searchable]="true"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['ReportingTo2Id']), 'form-control': true}"
+                                style="padding: 0px;">
+                            </ng-select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['ReportingTo2Id'])">
+                                {{getErrorMessage(accountForm, 'ReportingTo2Id')}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-3">
+                        <div class="col-lg-5">
+                            <label class="form-label" for="loginId">
+                                Login Id<span class="text-danger">*</span>
+                            </label>
+                            <input id="loginId" name="loginId" formControlName="LoginId" class="form-control" required
+                                maxlength="100" [ngClass]="{'is-invalid': isInvalidControl(form['LoginId'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['LoginId'])">
+                                {{getErrorMessage(accountForm, 'LoginId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5" *ngIf="PageRights.ActionType == 'new'">
+                            <label class="form-label" for="password">
+                                Password<span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <input [type]="fieldTextType ? 'text' : 'password'" id="password" name="password"
+                                    formControlName="Password" class="form-control pe-5" required maxlength="500"
+                                    [ngClass]="{'is-invalid': isInvalidControl(form['Password'])}">
+                                <button type="button" class="btn btn-link position-absolute end-0">
+                                    <i class="mdi align-middle"
+                                        [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType}"
+                                        (click)="fieldTextType = !fieldTextType">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Password'])">
+                                {{getErrorMessage(accountForm, 'Password')}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-3">
+                        <div class="col-lg-2">
+                            <label class="form-label" for="firstName">
+                                First Name
+                            </label>
+                            <input id="firstName" name="firstName" formControlName="FirstName" class="form-control"
+                                maxlength="50" required [ngClass]="{'is-invalid': isInvalidControl(form['FirstName'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['FirstName'])">
+                                {{getErrorMessage(accountForm, 'FirstName')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <label class="form-label" for="middleName">
+                                Middle Name
+                            </label>
+                            <input id="middleName" name="middleName" formControlName="MiddleName" class="form-control"
+                                maxlength="50" [ngClass]="{'is-invalid': isInvalidControl(form['MiddleName'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['MiddleName'])">
+                                {{getErrorMessage(accountForm, 'MiddleName')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <label class="form-label" for="lastName">
+                                Last Name
+                            </label>
+                            <input id="lastName" name="lastName" formControlName="LastName" class="form-control"
+                                maxlength="50" required [ngClass]="{'is-invalid': isInvalidControl(form['LastName'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['LastName'])">
+                                {{getErrorMessage(accountForm, 'LastName')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="form-label" for="userName">
+                                User Display Name
+                            </label>
+                            <input id="userName" name="userName" formControlName="UserName" class="form-control"
+                                maxlength="150" required [ngClass]="{'is-invalid': isInvalidControl(form['UserName'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['UserName'])">
+                                {{getErrorMessage(accountForm, 'UserName')}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-3">
+                        <div class="col-lg-5">
+                            <label class="form-label" for="mobile">
+                                Mobile<span class="text-danger">*</span>
+                            </label>
+                            <input id="mobile" name="mobile" formControlName="Mobile" class="form-control" required
+                                maxlength="15" [ngClass]="{'is-invalid': isInvalidControl(form['Mobile'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Mobile'])">
+                                {{getErrorMessage(accountForm, 'Mobile')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <label class="form-label" for="emailId">
+                                Email Id<span class="text-danger">*</span>
+                            </label>
+                            <input id="emailId" name="emailId" formControlName="EmailId" class="form-control" required
+                                maxlength="100" [ngClass]="{'is-invalid': isInvalidControl(form['EmailId'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['EmailId'])">
+                                {{getErrorMessage(accountForm, 'EmailId')}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-3">
+                        <div class="col-lg-2" *ngIf="PageRights.ActionType != 'new'">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-2">
+                            <label class="form-check-label" for="isLocked">
+                                Is Locked?
+                            </label>
+                            <input type="checkbox" id="isLocked" name="isLocked" formControlName="IsLocked"
+                                class="form-check-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

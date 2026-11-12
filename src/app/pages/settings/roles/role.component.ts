@@ -1,8 +1,10 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { cloneDeep } from 'lodash';
+import { filter, debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { cloneDeep } from 'lodash';
+
 import { ShowDialogService } from '../../../shared/show-dialog.service';
 import { PaginationService } from '../../../core/services/pagination.service';
 import { BaseListComponent } from '../../../common/base-list/base.list.component';
@@ -45,6 +47,33 @@ export class RoleComponent extends BaseListComponent<RoleModel> implements OnIni
     //Load initial roles data
     this.paginationService.PageIndex = 0;
     this.onLoadRolesByCriteria();
+
+    this.filterForm.get('SearchText')?.valueChanges.pipe(
+      filter((res: any) => {          // if character length greater then 2
+        this.paginationService.PageIndex = 0;
+
+        if (res.length == 0) {
+          this.filterForm.controls["SearchText"].setValue('');
+          this.onLoadRolesByCriteria();
+          return false;
+        }
+
+        return res.length > 2
+      }),
+
+      // Time in milliseconds between key events
+      debounceTime(650),
+
+      // If previous query is diffent from current   
+      distinctUntilChanged()
+
+      // subscription for response
+    ).subscribe((searchText: string) => {
+      this.paginationService.PageIndex = 0;
+      this.filterForm.controls["SearchText"].setValue(searchText);
+
+      this.onLoadRolesByCriteria();
+    });
   }
 
   onLoadRolesByCriteria(): any {
@@ -190,8 +219,7 @@ export class RoleComponent extends BaseListComponent<RoleModel> implements OnIni
     let searchResults = this.allRoles.filter((item: any) => {
       return (
         item.Code.toLowerCase().includes(searchText.toLowerCase()) ||
-        item.Name.toLowerCase().includes(searchText.toLowerCase()) ||
-        item.PageTitle.toLowerCase().includes(searchText.toLowerCase())
+        item.Name.toLowerCase().includes(searchText.toLowerCase())
       );
     });
 

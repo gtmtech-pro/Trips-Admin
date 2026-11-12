@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { filter, debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { cloneDeep } from 'lodash';
 
@@ -51,6 +52,33 @@ export class DataValueComponent extends BaseListComponent<DataValueModel> implem
 
       //Load initial dataValues data
       this.paginationService.PageIndex = 0;
+      this.onLoadDataValuesByCriteria();
+    });
+
+    this.filterForm.get('SearchText')?.valueChanges.pipe(
+      filter((res: any) => {          // if character length greater then 2
+        this.paginationService.PageIndex = 0;
+
+        if (res.length == 0) {
+          this.filterForm.controls["SearchText"].setValue('');
+          this.onLoadDataValuesByCriteria();
+          return false;
+        }
+
+        return res.length > 2
+      }),
+
+      // Time in milliseconds between key events
+      debounceTime(650),
+
+      // If previous query is diffent from current   
+      distinctUntilChanged()
+
+      // subscription for response
+    ).subscribe((searchText: string) => {
+      this.paginationService.PageIndex = 0;
+      this.filterForm.controls["SearchText"].setValue(searchText);
+
       this.onLoadDataValuesByCriteria();
     });
   }

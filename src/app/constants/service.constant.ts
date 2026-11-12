@@ -51,6 +51,14 @@ export class ServiceConstants {
         ChangeLogin: "Account/ChangeUserLoginId"
     };
 
+    public AccountTransaction = {
+        GetAll: "AccountTransaction/GetAccountTransactions",
+        GetAllByCriteria: "AccountTransaction/GetAccountTransactionsByCriteria",
+        GetById: "AccountTransaction/GetAccountTransactionById",
+        CreateOrUpdate: "AccountTransaction/CreateOrUpdateAccountTransactionDetails",
+        Delete: "AccountTransaction/DeleteAccountTransactionById"
+    };
+
     public Country = {
         GetAll: "Country/GetCountries",
         GetAllByCriteria: "Country/GetCountriesByCriteria",

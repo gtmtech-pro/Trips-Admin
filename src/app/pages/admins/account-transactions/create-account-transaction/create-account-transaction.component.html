@@ -1,0 +1,196 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Account Transaction" [breadcrumbItems]="BreadCrumbItems"></app-breadcrumbs>
+
+<div class="row" id="account-transaction">
+    <div class="col-lg-12">
+        <div class="card">
+            <form name="accountTransactionForm" [formGroup]="accountTransactionForm" class="accountTransaction w-100-p" autocomplete="off"
+                (ngSubmit)="saveOrUpdateAccountTransactionDetails()">
+                <div class="card-header">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm">
+                            <div class="d-flex align-items-center">
+                                <a class="back-trans-action" [routerLink]="'/hrms/account-transactions'">
+                                    <img src="assets/images/back.png" height="30" />
+                                </a>
+                                <h5 class="card-title mb-0">
+                                    {{ this.PageRights.ActionType | titlecase }} Account Transaction
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <div class="d-flex gap-2" *ngIf="PageRights.ActionType !='view'">
+                                <button type="submit" class="btn btn-success add-btn" id="create-btn">
+                                    <i class="ri-add-line align-bottom me-1"></i>
+                                    {{ this.PageRights.ActionType == 'new'? 'Save' : 'Update' }}
+                                </button>
+                                <button type="button" class="btn btn-info" [routerLink]="'/hrms/account-transactions'">
+                                    <i class="ri-file-download-line align-bottom me-1"></i>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-4">
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="AccountId">
+                                Account<span class="text-danger">*</span>
+                            </label>
+                            <select id="accountId" name="accountId" formControlName="AccountId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['AccountId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of accountList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['AccountId'])">
+                                {{getErrorMessage(accountTransactionForm, 'AccountId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="TransactionId">
+                                Transaction<span class="text-danger">*</span>
+                            </label>
+                            <select id="transactionId" name="transactionId" formControlName="TransactionId" class="form-select" data-choices required
+                                [ngClass]="{'is-invalid': isInvalidControl(form['TransactionId'])}">
+                                <option [ngValue]="dataItem.Id" *ngFor="let dataItem of transactionList">
+                                    {{ dataItem.Name }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['TransactionId'])">
+                                {{getErrorMessage(accountTransactionForm, 'TransactionId')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="rights">
+                                Rights
+                            </label>
+                            <input type="checkbox" id="rights" name="rights" formControlName="Rights"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="canAdd">
+                                Can Add
+                            </label>
+                            <input type="checkbox" id="canAdd" name="canAdd" formControlName="CanAdd"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="canEdit">
+                                Can Edit
+                            </label>
+                            <input type="checkbox" id="canEdit" name="canEdit" formControlName="CanEdit"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="canDelete">
+                                Can Delete
+                            </label>
+                            <input type="checkbox" id="canDelete" name="canDelete" formControlName="CanDelete"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="canView">
+                                Can View
+                            </label>
+                            <input type="checkbox" id="canView" name="canView" formControlName="CanView"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="canExport">
+                                Can Export
+                            </label>
+                            <input type="checkbox" id="canExport" name="canExport" formControlName="CanExport"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="canChild">
+                                Can Child
+                            </label>
+                            <input type="checkbox" id="canChild" name="canChild" formControlName="CanChild"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="canRemark">
+                                Can Remark
+                            </label>
+                            <input type="checkbox" id="canRemark" name="canRemark" formControlName="CanRemark"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="listView">
+                                List View
+                            </label>
+                            <input type="checkbox" id="listView" name="listView" formControlName="ListView"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="basicView">
+                                Basic View
+                            </label>
+                            <input type="checkbox" id="basicView" name="basicView" formControlName="BasicView"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="detailView">
+                                Detail View
+                            </label>
+                            <input type="checkbox" id="detailView" name="detailView" formControlName="DetailView"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isPublic">
+                                Is Public?
+                            </label>
+                            <input type="checkbox" id="isPublic" name="isPublic" formControlName="IsPublic"
+                                class="form-check-input">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-label" for="remarks">
+                                Remarks
+                            </label>
+                            <input id="remarks" name="remarks" formControlName="Remarks" class="form-control"
+                                maxlength="350"
+                                [ngClass]="{'is-invalid': isInvalidControl(form['Remarks'])}">
+                            <div class="invalid-feedback" *ngIf="isShowErrors(form['Remarks'])">
+                                {{getErrorMessage(accountTransactionForm, 'Remarks')}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label class="form-check-label" for="isActive">
+                                Is Active?
+                            </label>
+                            <input type="checkbox" id="isActive" name="isActive" formControlName="IsActive"
+                                class="form-check-input">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="elmLoader">
+                    <div class="spinner-border text-primary avatar-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

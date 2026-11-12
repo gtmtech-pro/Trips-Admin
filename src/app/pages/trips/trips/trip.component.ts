@@ -1,15 +1,15 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { RootReducerState } from '../../../store';
-import { Store } from '@ngrx/store';
-import { cloneDeep } from 'lodash';
-import { TripModel } from './trip.model';
-import { TripService } from './trip.service';
+import { filter, debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { cloneDeep } from 'lodash';
+
 import { BaseListComponent } from '../../../common/base-list/base.list.component';
 import { ShowDialogService } from '../../../shared/show-dialog.service';
 import { PaginationService } from '../../../core/services/pagination.service';
+import { TripModel } from './trip.model';
+import { TripService } from './trip.service';
 
 @Component({
   selector: 'data-list-view',
@@ -29,7 +29,6 @@ export class TripComponent extends BaseListComponent<TripModel> implements OnIni
     public dialogService: ShowDialogService,
     public zone: NgZone,
     override snackBar: MatSnackBar,
-    public store: Store<{ data: RootReducerState }>,
     public paginationService: PaginationService,
     public modalService: NgbModal
   ) {
@@ -48,6 +47,33 @@ export class TripComponent extends BaseListComponent<TripModel> implements OnIni
     //Load initial trips data
     this.paginationService.PageIndex = 0;
     this.onLoadTripsByCriteria();
+
+    this.filterForm.get('SearchText')?.valueChanges.pipe(
+      filter((res: any) => {          // if character length greater then 2
+        this.paginationService.PageIndex = 0;
+
+        if (res.length == 0) {
+          this.filterForm.controls["SearchText"].setValue('');
+          this.onLoadTripsByCriteria();
+          return false;
+        }
+
+        return res.length > 2
+      }),
+
+      // Time in milliseconds between key events
+      debounceTime(650),
+
+      // If previous query is diffent from current   
+      distinctUntilChanged()
+
+      // subscription for response
+    ).subscribe((searchText: string) => {
+      this.paginationService.PageIndex = 0;
+      this.filterForm.controls["SearchText"].setValue(searchText);
+
+      this.onLoadTripsByCriteria();
+    });
   }
 
   onLoadTripsByCriteria(): any {
@@ -192,9 +218,8 @@ export class TripComponent extends BaseListComponent<TripModel> implements OnIni
 
     let searchResults = this.allTrips.filter((item: any) => {
       return (
-        item.Code.toLowerCase().includes(searchText.toLowerCase()) ||
-        item.Name.toLowerCase().includes(searchText.toLowerCase()) ||
-        item.PageTitle.toLowerCase().includes(searchText.toLowerCase())
+        item.TripName.toLowerCase().includes(searchText.toLowerCase()) ||
+        item.Destination.toLowerCase().includes(searchText.toLowerCase())
       );
     });
 

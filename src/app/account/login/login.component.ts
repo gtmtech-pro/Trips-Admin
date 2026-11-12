@@ -90,6 +90,10 @@ export class LoginComponent extends BaseComponent<LoginModel> implements OnInit 
    */
   onSubmit() {
     this.isInvalidLogin = false;
+    this.loginModel.UserId = this.loginForm.value.UserId;
+    this.loginModel.Password = this.loginForm.value.Password;
+    this.loginModel.RememberMe = this.loginForm.value.RememberMe;
+    this.loginModel.IsMobile = false;
     this.showHideLoading(true);
 
     this.authenticationService.loginUser(this.loginModel)

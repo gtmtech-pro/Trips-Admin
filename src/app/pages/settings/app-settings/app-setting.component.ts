@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { filter, debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { cloneDeep } from 'lodash';
 
@@ -46,6 +47,33 @@ export class AppSettingComponent extends BaseListComponent<AppSettingModel> impl
     //Load initial appSettings data
     this.paginationService.PageIndex = 0;
     this.onLoadAppSettingsByCriteria();
+
+    this.filterForm.get('SearchText')?.valueChanges.pipe(
+      filter((res: any) => {          // if character length greater then 2
+        this.paginationService.PageIndex = 0;
+
+        if (res.length == 0) {
+          this.filterForm.controls["SearchText"].setValue('');
+          this.onLoadAppSettingsByCriteria();
+          return false;
+        }
+
+        return res.length > 2
+      }),
+
+      // Time in milliseconds between key events
+      debounceTime(650),
+
+      // If previous query is diffent from current   
+      distinctUntilChanged()
+
+      // subscription for response
+    ).subscribe((searchText: string) => {
+      this.paginationService.PageIndex = 0;
+      this.filterForm.controls["SearchText"].setValue(searchText);
+
+      this.onLoadAppSettingsByCriteria();
+    });
   }
 
   onLoadAppSettingsByCriteria(): any {
@@ -190,6 +218,7 @@ export class AppSettingComponent extends BaseListComponent<AppSettingModel> impl
 
     let searchResults = this.allAppSettings.filter((item: any) => {
       return (
+        item.SettingType.toLowerCase().includes(searchText.toLowerCase()) ||
         item.SettingName.toLowerCase().includes(searchText.toLowerCase()) ||
         item.SettingValue.toLowerCase().includes(searchText.toLowerCase())
       );
