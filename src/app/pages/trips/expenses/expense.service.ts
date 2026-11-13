@@ -48,12 +48,12 @@ export class ExpenseService {
     }
 
     deleteExpenseById(expenseIds: string[]) {
-        var expensParams = {
+        var expenseParams = {
             DeletedIds: expenseIds
         };
 
         return this.http
-            .HttpPost(this.http.Services.Expense.Delete, expensParams)
+            .HttpPost(this.http.Services.Expense.Delete, expenseParams)
             .pipe(
                 retry(this.http.Services.RetryServieNo),
                 catchError(this.http.HandleError),

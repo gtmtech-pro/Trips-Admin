@@ -25,7 +25,7 @@
               <div class="flex-shrink-0">
                 <div class="d-flex gap-1 flex-wrap">
                   <button type="button" *ngIf="PageRights.IsAdd" title="Create Refund" class="btn btn-primary"
-                    [routerLink]="['/hrms/refunds', 'new']" skipLocationChange="true" replaceUrl="false">
+                    [routerLink]="['/trips/refunds', 'new']" skipLocationChange="true" replaceUrl="false">
                     <i class="ri-add-box-line fs-18"></i>
                   </button>
 
@@ -159,14 +159,14 @@
                     <ul class="list-inline hstack gap-2 mb-0">
                       <li *ngIf="PageRights.IsView" class="list-inline-item" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="View">
-                        <a [routerLink]="['/hrms/refunds', 'view', dataItem.RefundId]"
+                        <a [routerLink]="['/trips/refunds', 'view', dataItem.RefundId]"
                           skipLocationChange="true" replaceUrl="false" class="text-primary d-inline-block">
                           <i class="ri-eye-fill fs-16"></i>
                         </a>
                       </li>
                       <li *ngIf="PageRights.IsEdit" class="list-inline-item edit" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Edit">
-                        <a [routerLink]="['/hrms/refunds', 'edit', dataItem.RefundId]"
+                        <a [routerLink]="['/trips/refunds', 'edit', dataItem.RefundId]"
                           skipLocationChange="true" replaceUrl="false"
                           class="text-primary d-inline-block edit-item-btn">
                           <i class="ri-pencil-fill fs-16"></i>

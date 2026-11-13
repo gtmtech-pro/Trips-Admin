@@ -43,7 +43,7 @@ export class ExpenseComponent extends BaseListComponent<ExpenseModel> implements
   }
 
   override ngOnInit(): void {
-    //Load initial expens data
+    //Load initial expenses data
     this.paginationService.PageIndex = 0;
     this.onLoadExpensesByCriteria();
 
@@ -112,9 +112,9 @@ export class ExpenseComponent extends BaseListComponent<ExpenseModel> implements
     this.onLoadExpensesByCriteria();
   }
 
-  onDeleteExpenses(expenseIds: string[]) {
+  onDeleteExpense(expenseIds: string[]) {
     this.dialogService
-      .openConfirmDialog(this.Constants.Messages.DeleteConfirmationMessage, 'Expenses Deletion')
+      .openConfirmDialog(this.Constants.Messages.DeleteConfirmationMessage, 'Expense')
       .afterClosed()
       .subscribe((confResp: any) => {
         if (confResp) {
@@ -131,17 +131,17 @@ export class ExpenseComponent extends BaseListComponent<ExpenseModel> implements
                 });
               }
             }, (error: any) => {
-              console.log('Expenses deletion errors =>', error);
+              console.log('Expense deletion errors =>', error);
             });
         }
       });
   }
 
   deleteMultipleExpenses(): void {
-    this.onDeleteExpenses(this.CheckedDeletedIds);
+    this.onDeleteExpense(this.CheckedDeletedIds);
   }
 
-  exportExpenseData(): void {
+  exportExpensesData(): void {
     this.showHideLoading(true);
 
     let params = this.getExpenseParams();
@@ -166,7 +166,7 @@ export class ExpenseComponent extends BaseListComponent<ExpenseModel> implements
     });
   }
 
-  //Create Expenses Filters form and returns {FormGroup}
+  //Create Expense Filters form and returns {FormGroup}
   createExpenseFilterForm(): FormGroup {
     return this.formBuilder.group({
       SearchText: new FormControl({ value: '', disabled: false }),
@@ -221,14 +221,14 @@ export class ExpenseComponent extends BaseListComponent<ExpenseModel> implements
     this.expenses = this.paginationService.changePage(searchResults)
   }
 
-  // Check/uncheck all expenses items
+  // Check/uncheck all expense items
   checkUncheckAllExpenses(evt: any) {
     this.expenses.forEach((x: { state: any; }) => x.state = evt.target.checked);
-    this.onSelectedExpenses(evt);
+    this.onSelectedExpense(evt);
   }
 
-  // Check/uncheck selected expenses
-  onSelectedExpenses(evt: any) {
+  // Check/uncheck selected expense
+  onSelectedExpense(evt: any) {
     this.CheckedDeletedIds = [];
 
     for (var i = 0; i < this.expenses.length; i++) {

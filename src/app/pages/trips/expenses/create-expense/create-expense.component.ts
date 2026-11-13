@@ -111,7 +111,7 @@ export class CreateExpenseComponent extends BaseComponent<ExpenseModel> implemen
         this.showHideLoading(false);
       }, (error: any) => {
         this.showHideLoading(false);
-        console.log('Expens deletion errors =>', error);
+        console.log('Expense deletion errors =>', error);
       });
   }
 
@@ -134,7 +134,7 @@ export class CreateExpenseComponent extends BaseComponent<ExpenseModel> implemen
     });
   }
 
-  // Returns Expens form data
+  // Returns Expense form data
   get form(): any {
     return this.expenseForm.controls;
   }

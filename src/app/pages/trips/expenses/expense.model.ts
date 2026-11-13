@@ -16,22 +16,22 @@ export class ExpenseModel {
     IsActive: boolean;
     RequestType: any;
 
-    constructor(expensItem?: any) {
-        expensItem = expensItem || {};
+    constructor(expenseItem?: any) {
+        expenseItem = expenseItem || {};
 
-        this.ExpenseId = expensItem.ExpenseId || uuidv4();
-        this.TripId = expensItem.TripId || null;
-        this.CategoryId = expensItem.CategoryId || null;
-        this.ExpenseTitle = expensItem.ExpenseTitle || '';
-        this.Description = expensItem.Description || '';
-        this.PaidByTripMemberId = expensItem.PaidByTripMemberId || null;
-        this.OriginalAmount = expensItem.OriginalAmount || '';
-        this.BaseAmount = expensItem.BaseAmount || '';
-        this.ExpenseDate = expensItem.ExpenseDate || '';
-        this.SplitMethod = expensItem.SplitMethod || '';
-        this.IsDeleted = expensItem.IsDeleted || false;
-        this.ExpenseStatus = expensItem.ExpenseStatus || '';
-        this.IsActive = expensItem.IsActive || true;
+        this.ExpenseId = expenseItem.ExpenseId || uuidv4();
+        this.TripId = expenseItem.TripId || null;
+        this.CategoryId = expenseItem.CategoryId || null;
+        this.ExpenseTitle = expenseItem.ExpenseTitle || '';
+        this.Description = expenseItem.Description || '';
+        this.PaidByTripMemberId = expenseItem.PaidByTripMemberId || null;
+        this.OriginalAmount = expenseItem.OriginalAmount || '';
+        this.BaseAmount = expenseItem.BaseAmount || '';
+        this.ExpenseDate = expenseItem.ExpenseDate || '';
+        this.SplitMethod = expenseItem.SplitMethod || '';
+        this.IsDeleted = expenseItem.IsDeleted || false;
+        this.ExpenseStatus = expenseItem.ExpenseStatus || '';
+        this.IsActive = expenseItem.IsActive || true;
         this.RequestType = 0; // New
     }
 }

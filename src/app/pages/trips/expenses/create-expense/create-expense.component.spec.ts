@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CreateExpensComponent } from './create-expens.component';
+import { CreateExpenseComponent } from './create-expense.component';
 
-describe('CreateExpensComponent', () => {
-  let component: CreateExpensComponent;
-  let fixture: ComponentFixture<CreateExpensComponent>;
+describe('CreateExpenseComponent', () => {
+  let component: CreateExpenseComponent;
+  let fixture: ComponentFixture<CreateExpenseComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CreateExpensComponent]
+      declarations: [CreateExpenseComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateExpensComponent);
+    fixture = TestBed.createComponent(CreateExpenseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

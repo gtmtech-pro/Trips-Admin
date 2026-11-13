@@ -15,7 +15,8 @@
             <div class="col-lg-4">
               <div class="search-box">
                 <input type="text" name="searchText" formControlName="SearchText" class="form-control search"
-                  placeholder="Search expenses..." (ngModelChange)="performSearchInExpenses()">
+                  placeholder="Search expenses..."
+                  (ngModelChange)="performSearchInExpenses()">
                 <i class="ri-search-line search-icon"></i>
               </div>
             </div>
@@ -23,13 +24,13 @@
             <div class="col-lg-auto">
               <div class="flex-shrink-0">
                 <div class="d-flex gap-1 flex-wrap">
-                  <button type="button" *ngIf="PageRights.IsAdd" title="Create Expens" class="btn btn-primary"
+                  <button type="button" *ngIf="PageRights.IsAdd" title="Create Expense" class="btn btn-primary"
                     [routerLink]="['/hrms/expenses', 'new']" skipLocationChange="true" replaceUrl="false">
                     <i class="ri-add-box-line fs-18"></i>
                   </button>
 
                   <button type="button" *ngIf="PageRights.IsExport" title="Export Expenses" class="btn btn-info"
-                    (click)="exportExpenseData()">
+                    (click)="exportExpensesData()">
                     <i class="ri-file-download-line fs-18"></i>
                   </button>
 
@@ -37,31 +38,32 @@
                     <i class="ri-equalizer-fill fs-18"></i>
                   </button>
 
-                  <button type="button" title="Refresh Expens Data" class="btn btn-success"
+                  <button type="button" title="Refresh Expenses Data" class="btn btn-success"
                     (click)="resetExpensesFilters()">
                     <i class="ri-refresh-line fs-18"></i>
                   </button>
 
-                  <button type="button" id="delete-actions" *ngIf="PageRights.IsDelete" title="Delete selected expenses"
-                    class="btn btn-soft-danger hidden" [ngClass]="{'delete-actions': CheckedDeletedIds.length > 0}"
-                    (click)="deleteMultipleExpenses()">
+                  <button type="button" id="delete-actions" *ngIf="PageRights.IsDelete"
+                    title="Delete selected expenses" class="btn btn-soft-danger hidden"
+                    [ngClass]="{'delete-actions': CheckedDeletedIds.length > 0}" (click)="deleteMultipleExpenses()">
                     <i class="ri-delete-bin-2-line fs-18"></i>
                   </button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+      </div>
 
         <div class="card-body border border-dashed border-end-0 border-start-0" *ngIf="IsShowFilter">
           <div class="row g-3 mt-1">
             <div class="col-xxl-2 col-sm-4">
-              <input type="text" name="name" formControlName="Name" class="form-control" placeholder="Search by Name">
+              <input type="text" name="name" formControlName="Name" class="form-control"
+                placeholder="Search by Name">
             </div>
 
             <div class="col-xxl-2 col-sm-4">
               <select name="status" formControlName="Status" class="form-select" data-choices data-plugin="choices">
-                <option value="null" selected>All Transactions</option>
+                <option value="null" selected>All Expenses</option>
                 <option value="true">Active</option>
                 <option value="false">Inactive</option>
               </select>
@@ -93,7 +95,7 @@
             <li [ngbNavItem]="1" class="nav-item">
               <a ngbNavLink class="nav-link All py-3" data-bs-toggle="tab" id="All"
                 (click)="onLoadExpensesByStatus(null)" href="javascript:void(0);" role="tab" aria-selected="true">
-                All Expens
+                All Expense
               </a>
             </li>
 
@@ -106,7 +108,8 @@
 
             <li [ngbNavItem]="3" class="nav-item">
               <a ngbNavLink class="nav-link py-3 Inactive" data-bs-toggle="tab" id="Inactive"
-                (click)="onLoadExpensesByStatus('false')" href="javascript:void(0);" role="tab" aria-selected="false">
+                (click)="onLoadExpensesByStatus('false')" href="javascript:void(0);" role="tab"
+                aria-selected="false">
                 Inactive <span class="badge bg-danger align-middle ms-1"></span>
               </a>
             </li>
@@ -139,7 +142,7 @@
                   <th scope="row">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="checkAll" value="{{dataItem.ExpenseId}}"
-                        [(ngModel)]="dataItem.state" (change)="onSelectedExpenses($event)">
+                        [(ngModel)]="dataItem.state" (change)="onSelectedExpense($event)">
                     </div>
                   </th>
                   <td class="tripId">{{dataItem.TripName}}</td>
@@ -156,22 +159,23 @@
                     <ul class="list-inline hstack gap-2 mb-0">
                       <li *ngIf="PageRights.IsView" class="list-inline-item" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="View">
-                        <a [routerLink]="['/hrms/expenses', 'view', dataItem.ExpenseId]" skipLocationChange="true"
-                          replaceUrl="false" class="text-primary d-inline-block">
+                        <a [routerLink]="['/hrms/expenses', 'view', dataItem.ExpenseId]"
+                          skipLocationChange="true" replaceUrl="false" class="text-primary d-inline-block">
                           <i class="ri-eye-fill fs-16"></i>
                         </a>
                       </li>
                       <li *ngIf="PageRights.IsEdit" class="list-inline-item edit" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Edit">
-                        <a [routerLink]="['/hrms/expenses', 'edit', dataItem.ExpenseId]" skipLocationChange="true"
-                          replaceUrl="false" class="text-primary d-inline-block edit-item-btn">
+                        <a [routerLink]="['/hrms/expenses', 'edit', dataItem.ExpenseId]"
+                          skipLocationChange="true" replaceUrl="false"
+                          class="text-primary d-inline-block edit-item-btn">
                           <i class="ri-pencil-fill fs-16"></i>
                         </a>
                       </li>
                       <li *ngIf="PageRights.IsDelete" class="list-inline-item me-0" data-bs-toggle="tooltip"
                         data-bs-trigger="hover" data-bs-placement="top" ngbTooltip="Remove">
                         <a class="text-danger d-inline-block remove-item-btn"
-                          (click)="onDeleteExpenses([dataItem.ExpenseId])">
+                          (click)="onDeleteExpense([dataItem.ExpenseId])">
                           <i class="ri-delete-bin-5-fill fs-16"></i>
                         </a>
                       </li>
@@ -182,19 +186,19 @@
               </tbody>
             </table>
 
-            <!-- pagination -->
-            <ngb-pagination class="d-flex justify-content-end pagination-rounded-flat pagination-success pt-2"
-              [collectionSize]="paginationService.TotalRows" [(page)]="paginationService.PageIndex"
-              [pageSize]="paginationService.PageSize" [maxSize]="5" aria-label="Custom pagination" [rotate]="true"
-              [boundaryLinks]="true" (click)="onPageIndexChanged($event)">
+          <!-- pagination -->
+          <ngb-pagination class="d-flex justify-content-end pagination-rounded-flat pagination-success pt-2"
+            [collectionSize]="paginationService.TotalRows" [(page)]="paginationService.PageIndex"
+            [pageSize]="paginationService.PageSize" [maxSize]="5" aria-label="Custom pagination" [rotate]="true"
+            [boundaryLinks]="true" (click)="onPageIndexChanged($event)">
 
-              <ng-template ngbPaginationFirst>First</ng-template>
-              <ng-template ngbPaginationLast>Last</ng-template>
-              <ng-template ngbPaginationPrevious>Prev</ng-template>
-              <ng-template ngbPaginationNext>Next</ng-template>
-              <ng-template ngbPaginationEllipsis>...</ng-template>
-              <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
-            </ngb-pagination>
+            <ng-template ngbPaginationFirst>First</ng-template>
+            <ng-template ngbPaginationLast>Last</ng-template>
+            <ng-template ngbPaginationPrevious>Prev</ng-template>
+            <ng-template ngbPaginationNext>Next</ng-template>
+            <ng-template ngbPaginationEllipsis>...</ng-template>
+            <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+          </ngb-pagination>
           </div>
 
           <div id="elmLoader">
